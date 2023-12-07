@@ -8,9 +8,9 @@ import {
 } from "@headstartwp/next";
 import { BlocksRenderer } from "@headstartwp/core/react";
 import { getWPUrl, removeSourceUrl } from "@headstartwp/core";
-import { resolveBatch } from "../utils/promises";
-
-const singleParams = { postType: ["post", "page"] };
+import { PageContent } from "@/components/PageContent";
+import { resolveBatch } from "@/utils/promises";
+import { singleParams } from "@/params";
 
 const SinglePostsPage = () => {
   const { loading, error, data } = usePost(singleParams);
@@ -25,7 +25,7 @@ const SinglePostsPage = () => {
 
   return (
     <div>
-      <h1>{data.post.title.rendered}</h1>
+      <PageContent params={singleParams} />
       <BlocksRenderer html={data.post.content.rendered} />
     </div>
   );

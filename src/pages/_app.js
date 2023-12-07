@@ -1,9 +1,9 @@
 import { HeadlessApp } from "@headstartwp/next";
 import Router from "next/router";
 import NProgress from "nprogress";
-import Link from "next/link";
 
 import "../styles.css";
+import Link from "@/components/Link";
 
 Router.events.on("routeChangeStart", () => NProgress.start());
 Router.events.on("routeChangeComplete", () => {
