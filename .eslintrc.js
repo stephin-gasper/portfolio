@@ -1,6 +1,11 @@
 module.exports = {
   extends: ["@10up/eslint-config/react"],
   settings: {
+    "import/resolver": {
+      jsconfig: {
+        config: "jsconfig.json",
+      },
+    },
     jsdoc: {
       mode: "typescript",
     },
