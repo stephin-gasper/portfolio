@@ -1,7 +1,7 @@
 /*
 Includes Global CSS Styles such as libraries css and WP block library
 */
-@import url("css/nprogress.css");
+@import url("./nprogress.css");
 
 html,
 body {
