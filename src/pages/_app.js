@@ -3,6 +3,7 @@ import Router from "next/router";
 import NProgress from "nprogress";
 
 import "../css/globals.css";
+import "nprogress/nprogress.css";
 
 import Link from "@/components/Link";
 
