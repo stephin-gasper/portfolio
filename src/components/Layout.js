@@ -1,7 +1,14 @@
 import PropTypes from "prop-types";
 
 const Layout = ({ children }) => {
-  return <main id="main-content">{children}</main>;
+  return (
+    <>
+      <a href="#main-content" className="skip-link">
+        Skip to content
+      </a>
+      <main id="main-content">{children}</main>
+    </>
+  );
 };
 
 Layout.propTypes = {
