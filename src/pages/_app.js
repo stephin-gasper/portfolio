@@ -6,6 +6,7 @@ import "../styles/globals.css";
 import "nprogress/nprogress.css";
 
 import Link from "@/components/Link";
+import Layout from "@/components/Layout";
 
 Router.events.on("routeChangeStart", () => NProgress.start());
 Router.events.on("routeChangeComplete", () => {
@@ -42,7 +43,9 @@ const MyApp = ({ Component, pageProps }) => {
         linkComponent: Link,
       }}
     >
-      <Component {...props} />
+      <Layout>
+        <Component {...props} />
+      </Layout>
     </HeadlessApp>
   );
 };
