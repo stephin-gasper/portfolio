@@ -17,8 +17,7 @@ html {
 }
 
 body {
-  max-width: 540px;
-  margin: 0 auto;
+  margin: 0 24px;
   text-align: justify;
 }
 
@@ -71,9 +70,16 @@ p {
   text-indent: 1em;
 }
 
+/* Light theme */
+html.light {
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+}
+
 /* Media Query */
-@media only screen and (max-width: 600px) {
+@media screen and (min-width: 35.5em) {
   body {
-    width: 320px;
+    max-width: 540px;
+    margin: 0 auto;
   }
 }
