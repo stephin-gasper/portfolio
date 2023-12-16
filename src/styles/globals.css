@@ -1,8 +1,11 @@
 /* Variables */
 :root {
   --color-primary: #1e1e2e;
+  --color-primary-lighter: #1e1e2eb3;
   --color-secondary: #fdebf3;
+  --color-secondary-lighter: #fdebf366;
   --color-underline: #375a7f;
+  --color-highlight: #78c2ad;
   --font-primary: "Pacifico", cursive;
   --font-secondary: "Josefin Sans", sans-serif;
 }
@@ -27,18 +30,32 @@ body {
 
 /* Skip links */
 .skip-link {
+  clip-path: inset(50%);
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
   position: absolute;
-  top: 0;
-  right: 100%; /* moves off screen */
-  z-index: 500; /* some number that will make sure it covers other elements */
+  width: 1px;
+  word-wrap: normal;
 }
 
 .skip-link:focus {
-  right: auto;
-  background-color: #000;
-  color: #fff;
-  border: #fff 3px solid;
-  padding: 1em;
+  background-color: var(--color-secondary);
+  clip: auto;
+  clip-path: none;
+  color: var(--color-primary);
+  display: block;
+  font-size: 1em;
+  height: auto;
+  left: 5px;
+  line-height: normal;
+  padding: 0.938em 1.438em;
+  text-decoration: none;
+  top: 5px;
+  width: auto;
+  z-index: 100000; /* some number that will make sure it covers other elements */
 }
 
 /* Headings */
@@ -74,6 +91,11 @@ p {
 html.light {
   background-color: var(--color-secondary);
   color: var(--color-primary);
+}
+
+.light .skip-link:focus {
+  background-color: var(--color-primary);
+  color: var(--color-secondary);
 }
 
 /* Media Query */

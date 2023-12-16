@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 
 import Header from "./Header";
+import Footer from "./Footer";
 
 const Layout = ({ children }) => {
   return (
@@ -10,6 +11,7 @@ const Layout = ({ children }) => {
       </a>
       <Header />
       <main id="main-content">{children}</main>
+      <Footer />
     </>
   );
 };
