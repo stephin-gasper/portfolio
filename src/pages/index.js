@@ -5,21 +5,14 @@ import {
   addHookData,
   handleError,
 } from "@headstartwp/next";
-import PropTypes from "prop-types";
 
 import { resolveBatch } from "@/utils/promises";
 import { indexParams } from "@/params";
 
-import { PageContent } from "@/components/PageContent";
+import FeaturedImage from "@/components/FeaturedImage";
 
-const Homepage = ({ homePageSlug }) => {
-  const params = { ...indexParams, slug: homePageSlug };
-
-  return <PageContent params={params} />;
-};
-
-Homepage.propTypes = {
-  homePageSlug: PropTypes.string.isRequired,
+const Homepage = () => {
+  return <FeaturedImage src="/space.webp" alt="RaccoonSpaceGif" />;
 };
 
 export default Homepage;
