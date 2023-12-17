@@ -10,9 +10,15 @@ import { resolveBatch } from "@/utils/promises";
 import { indexParams } from "@/params";
 
 import FeaturedImage from "@/components/FeaturedImage";
+import Intro from "@/modules/home/Intro";
 
 const Homepage = () => {
-  return <FeaturedImage src="/space.webp" alt="RaccoonSpaceGif" />;
+  return (
+    <>
+      <FeaturedImage src="/space.webp" alt="RaccoonSpaceGif" />
+      <Intro />
+    </>
+  );
 };
 
 export default Homepage;
