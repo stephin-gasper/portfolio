@@ -20,6 +20,7 @@ html {
 }
 
 body {
+  font-family: var(--font-secondary);
   margin: 0 24px;
   text-align: justify;
 }
@@ -80,7 +81,6 @@ h2 {
 
 /* Paragraphs */
 p {
-  font-family: var(--font-secondary);
   font-size: 1.1em;
   hyphens: auto;
   line-height: 1.5;

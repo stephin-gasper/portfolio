@@ -7,10 +7,6 @@ const footerStyles = css`
   text-align: center;
 `;
 
-const copyStyles = css`
-  font-family: var(--font-secondary);
-`;
-
 const navigationLinks = [
   {
     id: "github",
@@ -35,9 +31,7 @@ const Footer = () => {
   return (
     <footer className={footerStyles}>
       <FooterLinks navigationLinks={navigationLinks} />
-      <small className={copyStyles}>
-        &copy; {year} Stephin Gasper. All Rights Reserved.
-      </small>
+      <small>&copy; {year} Stephin Gasper. All Rights Reserved.</small>
     </footer>
   );
 };
