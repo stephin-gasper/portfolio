@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Logo from "./Logo";
 import Navigation from "./Navigation";
 import ThemeToggle from "./ThemeToggle";
@@ -19,12 +20,14 @@ const navigationLinks = [
 ];
 
 const Header = () => {
+  const [currentTheme, setCurrentTheme] = useState("");
+
   return (
     <header>
       <nav className={navStyles}>
-        <Logo />
+        <Logo currentTheme={currentTheme} />
         <Navigation navigationLinks={navigationLinks} />
-        <ThemeToggle />
+        <ThemeToggle setCurrentTheme={setCurrentTheme} />
       </nav>
     </header>
   );
