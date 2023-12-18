@@ -1,24 +1,21 @@
+import PropTypes from "prop-types";
 import { useAppSettings } from "@headstartwp/next";
 import Link from "next/link";
-import { css, cx } from "@linaria/core";
+import { css } from "@linaria/core";
 
 import { media } from "@/styles/breakpoints";
 
-import { headerLinkStyles } from "./Header.style";
-
 const titleLinkStyles = css`
-  font-size: 1.3rem;
-  text-align: center;
+  display: inline-flex;
+  justify-self: center;
   grid-column: 1 / span 3;
   ${media.sm} {
-    text-align: left;
+    justify-self: flex-start;
     grid-column: 1 / span 1;
   }
 `;
 
-const NAME = "Stephin Gasper";
-
-const Logo = () => {
+const Logo = ({ currentTheme }) => {
   const { data, loading } = useAppSettings();
 
   if (loading) {
@@ -26,13 +23,19 @@ const Logo = () => {
   }
 
   return (
-    <Link
-      href={data?.settings?.site_url || "/"}
-      className={cx(headerLinkStyles, titleLinkStyles)}
-    >
-      {NAME}
+    <Link href={data?.settings?.site_url || "/"} className={titleLinkStyles}>
+      <img
+        src={`/logo-${currentTheme}-theme.svg`}
+        alt="logo"
+        width={70}
+        height={45}
+      />
     </Link>
   );
+};
+
+Logo.propTypes = {
+  currentTheme: PropTypes.string.isRequired,
 };
 
 export default Logo;

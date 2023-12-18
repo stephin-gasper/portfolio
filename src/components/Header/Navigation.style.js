@@ -1,6 +1,20 @@
-import { css, cx } from "@linaria/core";
+import { css } from "@linaria/core";
 
-import { headerLinkStyles } from "./Header.style";
+export const navLinkStyles = css`
+  color: var(--color-secondary);
+  font-family: var(--font-primary);
+  font-size: 1.1rem;
+  text-decoration: none;
+  .light & {
+    color: var(--color-primary);
+  }
+  &:hover,
+  &:focus {
+    text-decoration: underline var(--color-underline);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 6px;
+  }
+`;
 
 export const navListStyles = css`
   grid-column: 2 / span 1;
@@ -14,9 +28,3 @@ export const navListItemStyles = css`
   list-style: none;
   padding: 0;
 `;
-
-const navLinkFont = css`
-  font-size: 1.1rem;
-`;
-
-export const navLinkStyles = cx(headerLinkStyles, navLinkFont);

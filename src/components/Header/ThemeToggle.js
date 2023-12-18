@@ -1,17 +1,21 @@
 import { useEffect } from "react";
+import PropTypes from "prop-types";
+
 import {
   moonIconStyles,
   sunIconStyles,
   themeToggleBtnStyles,
 } from "./ThemeToggle.style";
 
-const ThemeToggle = () => {
+const ThemeToggle = ({ setCurrentTheme }) => {
   const handleToggleClick = () => {
     const element = document.documentElement;
     element.classList.toggle("light");
 
     const isLight = element.classList.contains("light");
-    localStorage.setItem("theme", isLight ? "light" : "dark");
+    const theme = isLight ? "light" : "dark";
+    setCurrentTheme(theme);
+    localStorage.setItem("theme", theme);
   };
 
   useEffect(() => {
@@ -28,6 +32,8 @@ const ThemeToggle = () => {
       return "dark";
     })();
 
+    setCurrentTheme(theme);
+
     if (theme === "dark") {
       document.documentElement.classList.remove("light");
     } else {
@@ -35,7 +41,7 @@ const ThemeToggle = () => {
     }
 
     window.localStorage.setItem("theme", theme);
-  }, []);
+  }, [setCurrentTheme]);
 
   return (
     <button
@@ -64,6 +70,10 @@ const ThemeToggle = () => {
       </svg>
     </button>
   );
+};
+
+ThemeToggle.propTypes = {
+  setCurrentTheme: PropTypes.func.isRequired,
 };
 
 export default ThemeToggle;
