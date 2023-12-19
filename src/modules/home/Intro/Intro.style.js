@@ -7,8 +7,8 @@ export const introSubTextStyles = css`
 
 export const jobTitlesStyles = css`
   text-decoration: underline var(--color-highlight);
-  text-decoration-thickness: 3px;
-  text-underline-offset: 8px;
+  text-decoration-thickness: 0.17em;
+  text-underline-offset: 0.455em;
 `;
 
 export const blinkStyles = css`
