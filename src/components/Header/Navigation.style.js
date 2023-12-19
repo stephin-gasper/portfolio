@@ -2,7 +2,7 @@ import { css } from "@linaria/core";
 
 export const navLinkStyles = css`
   color: var(--color-secondary);
-  font-family: var(--font-primary);
+  font-family: var(--font-secondary);
   font-size: 1.1rem;
   text-decoration: none;
   .light & {
