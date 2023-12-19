@@ -1,5 +1,9 @@
 import { useEffect, useState } from "react";
 
+const pauseTime = 1500;
+const letterTypePauseTime = 150;
+const letterDeletePauseTime = 100;
+
 const useTypewriter = ({ strings }) => {
   const [wordIndex, setWordIndex] = useState(0);
   const [text, setText] = useState("");
@@ -22,18 +26,21 @@ const useTypewriter = ({ strings }) => {
         setTimeout(() => {
           setIsDeleting(true);
           setIsPaused(false);
-        }, 2000);
+        }, pauseTime);
       } else if (isDeleting && text === "") {
         setIsDeleting(false);
         // Move to the next word
         setWordIndex((current) => (current + 1) % strings.length);
       }
     };
-    const timer = setTimeout(type, isDeleting ? 100 : 200);
+    const timer = setTimeout(
+      type,
+      isDeleting ? letterDeletePauseTime : letterTypePauseTime,
+    );
     return () => clearTimeout(timer);
   }, [wordIndex, isDeleting, text, strings]);
 
-  return { typedText: text, typingPaused: isPaused };
+  return { typedText: text, isPaused };
 };
 
 export default useTypewriter;
