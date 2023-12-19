@@ -16,7 +16,9 @@ const jobTitles = [
 ];
 
 const Intro = () => {
-  const { typedText, typingPaused } = useTypewriter({ strings: jobTitles });
+  const { typedText, isTypingPaused } = useTypewriter({
+    strings: jobTitles,
+  });
   return (
     <>
       <h1>Hello World, my name is Stephin Gasper.</h1>
@@ -26,7 +28,7 @@ const Intro = () => {
           {typedText}
           <span
             aria-hidden="true"
-            className={cx(typedCursorStyles, typingPaused && blinkStyles)}
+            className={cx(typedCursorStyles, isTypingPaused && blinkStyles)}
           >
             |
           </span>
