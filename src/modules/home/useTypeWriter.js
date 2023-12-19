@@ -40,7 +40,7 @@ const useTypewriter = ({ strings }) => {
     return () => clearTimeout(timer);
   }, [wordIndex, isDeleting, text, strings]);
 
-  return { typedText: text, isPaused };
+  return { typedText: text, isTypingPaused: isPaused };
 };
 
 export default useTypewriter;
