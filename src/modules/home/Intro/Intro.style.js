@@ -1,8 +1,9 @@
 import { css } from "@linaria/core";
 
 export const introSubTextStyles = css`
-  margin-top: 1.25em;
   font-weight: 600;
+  margin: 0;
+  padding: 1.375rem 0 0.313rem;
 `;
 
 export const jobTitlesStyles = css`
