@@ -74,8 +74,8 @@ h1 {
 
 h2 {
   text-decoration: underline var(--color-underline);
-  text-decoration-thickness: 4px;
-  text-underline-offset: 6px;
+  text-decoration-thickness: 0.119em;
+  text-underline-offset: 0.179em;
   font-size: 2.1em;
   margin-bottom: 0;
 }
@@ -102,7 +102,7 @@ html.light {
 /* Media Query */
 @media screen and (min-width: 35.5em) {
   body {
-    max-width: 540px;
+    max-width: 33.75rem;
     margin: 0 auto;
   }
 }
