@@ -12,7 +12,7 @@ export const themeToggleBtnStyles = css`
 `;
 
 export const moonIconStyles = css`
-  fill: #fdebf3;
+  fill: var(--color-secondary);
   .light & {
     fill: transparent;
   }
@@ -21,6 +21,6 @@ export const moonIconStyles = css`
 export const sunIconStyles = css`
   fill: transparent;
   .light & {
-    fill: #1e1e2e;
+    fill: var(--color-primary);
   }
 `;
