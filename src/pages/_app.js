@@ -17,7 +17,6 @@ Router.events.on("routeChangeError", () => NProgress.done());
 // eslint-disable-next-line react/prop-types
 const MyApp = ({ Component, pageProps }) => {
   // only HeadlessApp needs fallback and themeJson, so we remove them from the props we pass down to the pages
-
   // eslint-disable-next-line react/prop-types, no-unused-vars
   const { fallback = {}, themeJson = {}, ...props } = pageProps;
 
