@@ -26,7 +26,7 @@ const Logo = ({ currentTheme }) => {
     <Link href={data?.settings?.site_url || "/"} className={titleLinkStyles}>
       <img
         src={`/logo-${currentTheme}-theme.svg`}
-        alt="logo"
+        alt="stephin portfolio home"
         width={70}
         height={45}
       />
