@@ -5,20 +5,35 @@ import {
   addHookData,
   handleError,
 } from "@headstartwp/next";
+import { isBlock } from "@headstartwp/core";
+import { BlocksRenderer } from "@headstartwp/core/react";
+import PropTypes from "prop-types";
 
 import { resolveBatch } from "@/utils/promises";
 import { indexParams } from "@/params";
 
 import FeaturedImage from "@/components/FeaturedImage";
 import Intro from "@/modules/home/Intro";
+import SkillsBlock from "@/modules/home/blocks/SkillsBlock";
 
-const Homepage = () => {
+const Homepage = ({ pageContent }) => {
   return (
     <>
       <FeaturedImage src="/space.webp" alt="RaccoonSpaceGif" />
       <Intro />
+      <BlocksRenderer html={pageContent}>
+        <SkillsBlock
+          test={(node) =>
+            isBlock(node, { tagName: "section", className: "skills-container" })
+          }
+        />
+      </BlocksRenderer>
     </>
   );
+};
+
+Homepage.propTypes = {
+  pageContent: PropTypes.string.isRequired,
 };
 
 export default Homepage;
@@ -50,8 +65,12 @@ export async function getStaticProps(context) {
       },
     ]);
 
+    const pageData = hookData[0];
+
+    const pageContent = pageData.data.result.content.rendered;
+
     return addHookData([...hookData, appSettings], {
-      props: { homePageSlug: slug },
+      props: { pageContent },
       revalidate: 5 * 60,
     });
   } catch (e) {
