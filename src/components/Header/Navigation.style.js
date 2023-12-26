@@ -10,9 +10,7 @@ export const navLinkStyles = css`
   }
   &:hover,
   &:focus {
-    text-decoration: underline var(--color-underline);
-    text-decoration-thickness: 2px;
-    text-underline-offset: 6px;
+    text-decoration-color: var(--color-underline);
   }
 `;
 
