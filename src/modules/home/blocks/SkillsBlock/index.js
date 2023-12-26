@@ -10,10 +10,11 @@ import Skill from "./Skill";
 
 const skillsStyles = css`
   display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 0.625rem;
   padding-top: 1.375rem;
-  gap: 1rem 0.125rem;
   ${media.sm} {
-    column-gap: 0.5rem;
+    column-gap: 0.75rem;
   }
 `;
 
