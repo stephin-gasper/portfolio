@@ -73,8 +73,7 @@ h1 {
 }
 
 h2 {
-  text-decoration: underline var(--color-underline);
-  text-decoration-thickness: 0.119em;
+  text-decoration: underline var(--color-highlight) 0.119em;
   text-underline-offset: 0.179em;
   font-size: 2.1em;
   margin-bottom: 0;
@@ -86,6 +85,20 @@ p {
   hyphens: auto;
   line-height: 1.5;
   text-indent: 1em;
+}
+
+/* Links */
+
+a,
+a:active {
+  color: var(--color-highlight);
+  text-decoration: none;
+}
+
+a:hover,
+a:focus {
+  text-decoration: underline var(--color-highlight) 0.114em;
+  text-underline-offset: 0.341em;
 }
 
 /* Light theme */
