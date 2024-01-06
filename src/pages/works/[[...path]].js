@@ -10,6 +10,8 @@ import {
 import { worksParams } from "@/params";
 import { resolveBatch } from "@/utils/promises";
 
+import FeaturedImage from "@/components/FeaturedImage";
+
 /**
  * Archive page for work CPT
  *
@@ -48,6 +50,8 @@ const WorksPage = () => {
 
   return (
     <>
+      <FeaturedImage src="/laptop.webp" alt="Raccoon Laptop Gif" />
+
       {contributions ? (
         <>
           <h2>Contributions</h2>
