@@ -10,6 +10,27 @@ module.exports = {
   sourceUrl: process.env.NEXT_PUBLIC_HEADLESS_WP_URL,
   hostUrl: process.env.HOST_URL,
 
+  /**
+   * Register works cpt and its custom taxonomy
+   */
+  customPostTypes: [
+    {
+      slug: "work",
+      endpoint: "/wp-json/wp/v2/work",
+      single: "/work",
+      archive: "/works",
+    },
+  ],
+  customTaxonomies: [
+    {
+      slug: "work-category",
+      endpoint: "/wp-json/wp/v2/work-category",
+      postType: ["work"],
+      rewrite: "work-category",
+      restParam: "work-category",
+    },
+  ],
+
   redirectStrategy: "404",
 
   /**
