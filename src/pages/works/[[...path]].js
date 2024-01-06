@@ -18,22 +18,24 @@ import { resolveBatch } from "@/utils/promises";
 const WorksPage = () => {
   const { data, error, loading } = usePosts(worksParams);
 
-  const getPostsBasedOnTerm = useCallback(
+  const getPostsBasedOnTermAndSort = useCallback(
     (workTerm) =>
-      data.posts.filter((post) =>
-        post.terms.work_category.some((term) => term.slug === workTerm),
-      ),
+      data.posts
+        .filter((post) =>
+          post.terms.work_category.some((term) => term.slug === workTerm),
+        )
+        .sort((a, b) => a.menu_order - b.menu_order),
     [data.posts],
   );
 
   const contributions = useMemo(
-    () => getPostsBasedOnTerm("contributions"),
-    [getPostsBasedOnTerm],
+    () => getPostsBasedOnTermAndSort("contributions"),
+    [getPostsBasedOnTermAndSort],
   );
 
   const projects = useMemo(
-    () => getPostsBasedOnTerm("projects"),
-    [getPostsBasedOnTerm],
+    () => getPostsBasedOnTermAndSort("projects"),
+    [getPostsBasedOnTermAndSort],
   );
 
   if (error) {
