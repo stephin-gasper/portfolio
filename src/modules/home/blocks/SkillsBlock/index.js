@@ -38,7 +38,7 @@ const SkillsBlock = ({ domNode: node = defaultElement }) => {
   return (
     <section className={skillsStyles}>
       {skills.map((skill) => (
-        <Skill {...skill} />
+        <Skill key={skill.alt} {...skill} />
       ))}
     </section>
   );
