@@ -8,15 +8,18 @@ import {
 } from "@headstartwp/next";
 import { BlocksRenderer } from "@headstartwp/core/react";
 import { getWPUrl, removeSourceUrl } from "@headstartwp/core";
-import { PageContent } from "@/components/PageContent";
+
 import { resolveBatch } from "@/utils/promises";
 import { singleParams } from "@/params";
+
+import { PageContent } from "@/components/PageContent";
+import Loader from "@/components/Loader";
 
 const SinglePostsPage = () => {
   const { loading, error, data } = usePost(singleParams);
 
   if (loading) {
-    return "Loading...";
+    return <Loader />;
   }
 
   if (error) {

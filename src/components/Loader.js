@@ -20,8 +20,8 @@ const loader = css`
   transform: rotateZ(45deg);
   perspective: 1000px;
   border-radius: 50%;
-  width: 48px;
-  height: 48px;
+  width: 100px;
+  height: 100px;
   color: var(--color-secondary);
 
   .light & {

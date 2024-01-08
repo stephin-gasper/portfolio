@@ -2,6 +2,8 @@ import PropTypes from "prop-types";
 import { usePost } from "@headstartwp/next";
 import { HtmlDecoder } from "@headstartwp/core/react";
 
+import Loader from "./Loader";
+
 /**
  * This is an example of how an inner component can access the data without explicitly passing the data to it.
  * This reduces prop drilling but creates an implicit dependency with its parent. Use this strategy with caution and on components that are tied to a particular route.
@@ -17,7 +19,7 @@ export const PageContent = ({ params }) => {
   const { data, loading } = usePost(params);
 
   if (loading) {
-    return "loading";
+    return <Loader />;
   }
 
   return (

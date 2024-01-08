@@ -13,6 +13,7 @@ import { resolveBatch } from "@/utils/promises";
 
 import FeaturedImage from "@/components/FeaturedImage";
 import Details from "@/modules/work/Details";
+import Loader from "@/components/Loader";
 
 import { PLATFORM_MAP, TECH_STACK_MAP } from "@/modules/work/Work.constants";
 import { projectImageWrapperStyles } from "@/modules/work/Work.style";
@@ -44,7 +45,7 @@ const WorkPage = () => {
   }
 
   if (loading) {
-    return "Loading...";
+    return <Loader />;
   }
 
   return (

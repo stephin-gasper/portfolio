@@ -13,6 +13,7 @@ import { resolveBatch } from "@/utils/promises";
 import FeaturedImage from "@/components/FeaturedImage";
 import { worksWrapperStyles } from "@/modules/works/Works.style";
 import Card from "@/modules/works/Card";
+import Loader from "@/components/Loader";
 
 /**
  * Archive page for work CPT
@@ -72,7 +73,7 @@ const WorksPage = () => {
   }
 
   if (loading) {
-    return "Loading...";
+    return <Loader />;
   }
 
   return (
