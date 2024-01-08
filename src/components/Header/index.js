@@ -25,7 +25,7 @@ const navStyles = css`
 const navigationLinks = [
   {
     id: "1",
-    href: "/",
+    href: "/works",
     label: "Works",
   },
   {
