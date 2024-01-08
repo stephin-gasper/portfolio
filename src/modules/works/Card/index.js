@@ -15,7 +15,9 @@ const Card = ({ href, imgSrc, title, children }) => {
     <li className={cardWrapperStyles}>
       <Link href={href} className={cardInnerStyles}>
         <img src={imgSrc} className={cardImageStyles} alt="project" />
-        <h3 className={cardtitleStyles}>{title}</h3>
+        <h3 className={cardtitleStyles}>
+          <HtmlDecoder html={title} />
+        </h3>
         <p className={cardDescriptionStyles}>
           <HtmlDecoder html={children} />
         </p>
