@@ -52,7 +52,10 @@ const WorksPage = () => {
               <Card
                 key={work.id}
                 href={`/work/${work.slug}`}
-                imgSrc={work._embedded["wp:featuredmedia"]?.[0]?.source_url}
+                imgSrc={
+                  work.meta_box.featured_image_url ||
+                  work._embedded["wp:featuredmedia"]?.[0]?.source_url
+                }
                 title={work.title.rendered}
               >
                 {work.excerpt.rendered}
