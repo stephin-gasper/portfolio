@@ -23,6 +23,8 @@ export const cardInnerStyles = css`
 
 export const cardImageStyles = css`
   width: 100%;
+  max-height: 350px;
+  object-fit: contain;
 `;
 
 export const cardtitleStyles = css`
