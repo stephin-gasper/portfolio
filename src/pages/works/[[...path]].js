@@ -11,6 +11,8 @@ import { worksParams } from "@/params";
 import { resolveBatch } from "@/utils/promises";
 
 import FeaturedImage from "@/components/FeaturedImage";
+import { worksWrapperStyles } from "@/modules/works/Works.style";
+import Card from "@/modules/works/Card";
 
 /**
  * Archive page for work CPT
@@ -40,6 +42,28 @@ const WorksPage = () => {
     [getPostsBasedOnTermAndSort],
   );
 
+  const renderWorks = useCallback(
+    (works, workCategoryTitle) =>
+      works ? (
+        <>
+          <h2>{workCategoryTitle}</h2>
+          <ul className={worksWrapperStyles}>
+            {works.map((work) => (
+              <Card
+                key={work.id}
+                href={`/work/${work.slug}`}
+                imgSrc={work._embedded["wp:featuredmedia"]?.[0]?.source_url}
+                title={work.title.rendered}
+              >
+                {work.excerpt.rendered}
+              </Card>
+            ))}
+          </ul>
+        </>
+      ) : null,
+    [],
+  );
+
   if (error) {
     return "error";
   }
@@ -52,26 +76,9 @@ const WorksPage = () => {
     <>
       <FeaturedImage src="/laptop.webp" alt="Raccoon Laptop Gif" />
 
-      {contributions ? (
-        <>
-          <h2>Contributions</h2>
-          <ul>
-            {contributions.map((post) => (
-              <li key={post.id}>{post.title.rendered}</li>
-            ))}
-          </ul>
-        </>
-      ) : null}
-      {projects ? (
-        <>
-          <h2>Projects</h2>
-          <ul>
-            {projects.map((post) => (
-              <li key={post.id}>{post.title.rendered}</li>
-            ))}
-          </ul>
-        </>
-      ) : null}
+      {renderWorks(contributions, "Contributions")}
+
+      {renderWorks(projects, "Projects")}
     </>
   );
 };
