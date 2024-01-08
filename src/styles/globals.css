@@ -79,6 +79,11 @@ h2 {
   margin-bottom: 0;
 }
 
+h3 {
+  font-size: 1.5rem;
+  font-weight: normal;
+}
+
 /* Paragraphs */
 p {
   font-size: 1.1em;
