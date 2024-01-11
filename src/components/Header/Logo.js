@@ -1,5 +1,4 @@
 import PropTypes from "prop-types";
-import { useAppSettings } from "@headstartwp/next";
 import Link from "next/link";
 import { css } from "@linaria/core";
 
@@ -15,24 +14,16 @@ const titleLinkStyles = css`
   }
 `;
 
-const Logo = ({ currentTheme }) => {
-  const { data, loading } = useAppSettings();
-
-  if (loading) {
-    return null;
-  }
-
-  return (
-    <Link href={data?.settings?.site_url || "/"} className={titleLinkStyles}>
-      <img
-        src={`/logo-${currentTheme}-theme.svg`}
-        alt="stephin portfolio home"
-        width={70}
-        height={45}
-      />
-    </Link>
-  );
-};
+const Logo = ({ currentTheme }) => (
+  <Link href="/" className={titleLinkStyles}>
+    <img
+      src={`/logo-${currentTheme}-theme.svg`}
+      alt="stephin portfolio home"
+      width={70}
+      height={45}
+    />
+  </Link>
+);
 
 Logo.propTypes = {
   currentTheme: PropTypes.string.isRequired,
