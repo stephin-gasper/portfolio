@@ -30,6 +30,11 @@ const navigationLinks = [
   },
   {
     id: "2",
+    href: "/resume",
+    label: "Resume",
+  },
+  {
+    id: "3",
     href: "https://github.com/stephin-gasper",
     label: "Github",
     isExternal: true,
