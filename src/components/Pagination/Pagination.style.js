@@ -6,7 +6,7 @@ export const paginationContainerStyles = css`
   list-style-type: none;
   margin: 0;
   padding: 0;
-  gap: 10px;
+  gap: 0.625em;
 `;
 
 export const paginationItemStyles = css`
@@ -31,14 +31,14 @@ export const paginationItemBtnStyles = css`
     background-color: rgba(255, 255, 255, 0.04);
     cursor: pointer;
     .light & {
-      background-color: rgba(0, 0, 0, 0.04);
+      background-color: rgba(0, 0, 0, 0.06);
     }
   }
 
   &.selected {
-    background-color: rgba(255, 255, 255, 0.08);
+    background-color: rgba(255, 255, 255, 0.09);
     .light & {
-      background-color: rgba(0, 0, 0, 0.08);
+      background-color: rgba(0, 0, 0, 0.09);
     }
   }
 
