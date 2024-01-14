@@ -29,4 +29,7 @@ export const blinkStyles = css`
 
 export const typedCursorStyles = css`
   opacity: 1;
+  &.hide {
+    display: none;
+  }
 `;

@@ -5,11 +5,13 @@ const useTypewriter = ({
   pauseTime = 1500,
   typeSpeed = 150,
   deleteSpeed = 100,
+  isLoop = true,
 }) => {
   const [stringIndex, setStringIndex] = useState(0);
   const [text, setText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
+  const [continueLoop, setContinueLoop] = useState(true);
 
   useEffect(() => {
     const type = () => {
@@ -22,6 +24,10 @@ const useTypewriter = ({
       );
       // Determine if this string is complete
       if (!isDeleting && text === currentString) {
+        if (!isLoop && stringIndex === strings.length - 1) {
+          setContinueLoop(false);
+          return;
+        }
         setIsPaused(true);
         // Make a pause at the end
         setTimeout(() => {
@@ -34,8 +40,14 @@ const useTypewriter = ({
         setStringIndex((current) => (current + 1) % strings.length);
       }
     };
-    const timer = setTimeout(type, isDeleting ? deleteSpeed : typeSpeed);
-    return () => clearTimeout(timer);
+    const timer = continueLoop
+      ? setTimeout(type, isDeleting ? deleteSpeed : typeSpeed)
+      : null;
+    return () => {
+      if (timer) {
+        clearTimeout(timer);
+      }
+    };
   }, [
     stringIndex,
     isDeleting,
@@ -44,9 +56,11 @@ const useTypewriter = ({
     deleteSpeed,
     typeSpeed,
     pauseTime,
+    isLoop,
+    continueLoop,
   ]);
 
-  return { typedText: text, isTypingPaused: isPaused };
+  return { typedText: text, isTypingPaused: isPaused, continueLoop };
 };
 
 export default useTypewriter;

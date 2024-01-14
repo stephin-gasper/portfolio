@@ -16,7 +16,7 @@ const jobTitles = [
 ];
 
 const Intro = () => {
-  const { typedText, isTypingPaused } = useTypewriter({
+  const { typedText, isTypingPaused, continueLoop } = useTypewriter({
     strings: jobTitles,
   });
   return (
@@ -28,7 +28,11 @@ const Intro = () => {
           {typedText}
           <span
             aria-hidden="true"
-            className={cx(typedCursorStyles, isTypingPaused && blinkStyles)}
+            className={cx(
+              typedCursorStyles,
+              isTypingPaused && blinkStyles,
+              !continueLoop && "hide",
+            )}
           >
             |
           </span>
