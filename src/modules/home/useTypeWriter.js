@@ -1,5 +1,26 @@
 import { useEffect, useState } from "react";
 
+/**
+ * @typedef {object} TypeWriterValues
+ * @property {string} typedText - Current typed text
+ * @property {boolean} isTypingPaused - Whether typing animation has paused before next text is animated
+ */
+
+/**
+ * A React hook to return text with typewritter effect based on the strings passed.
+ * Check following article for reference {@link https://www.dhiwise.com/post/animate-your-words-a-journey-through-react-typewriter-effect | Animate Your Words: A Journey Through React Typewriter Effect}
+ *
+ * @memberof module:React
+ *
+ * @param {object} params - Typewriter data
+ * @param {string[]} params.strings - Array of strings to be shown
+ * @param {number} params.pauseTime - Determine the pause time after typing animation is complete. Defaults to 1500ms
+ * @param {number} params.typeSpeed - Determine the delay when each letter is typed. Defaults to 150ms
+ * @param {number} params.deleteSpeed - Determine the delay when each letter is deleted. Defaults to 150ms
+ * @param {boolean} params.isLoop - Determine whether to loop through the strings continously. Defaults to true
+ *
+ * @returns {TypeWriterValues} Typewriter effect values
+ */
 const useTypewriter = ({
   strings,
   pauseTime = 1500,
