@@ -13,7 +13,6 @@ import { resolveBatch } from "@/utils/promises";
 import { indexParams } from "@/params";
 
 import FeaturedImage from "@/components/FeaturedImage";
-import Intro from "@/modules/home/Intro";
 import SkillsBlock from "@/modules/home/blocks/SkillsBlock";
 import TypingTextBlock from "@/modules/home/blocks/TypingTextBlock";
 
@@ -21,7 +20,6 @@ const Homepage = ({ pageContent }) => {
   return (
     <>
       <FeaturedImage src="/space.webp" alt="RaccoonSpaceGif" />
-      <Intro />
       <BlocksRenderer html={pageContent}>
         <SkillsBlock
           test={(node) =>
