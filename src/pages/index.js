@@ -5,7 +5,7 @@ import {
   addHookData,
   handleError,
 } from "@headstartwp/next";
-import { isBlock } from "@headstartwp/core";
+import { isBlock, isBlockByName } from "@headstartwp/core";
 import { BlocksRenderer } from "@headstartwp/core/react";
 import PropTypes from "prop-types";
 
@@ -15,6 +15,7 @@ import { indexParams } from "@/params";
 import FeaturedImage from "@/components/FeaturedImage";
 import Intro from "@/modules/home/Intro";
 import SkillsBlock from "@/modules/home/blocks/SkillsBlock";
+import TypingTextBlock from "@/modules/home/blocks/TypingTextBlock";
 
 const Homepage = ({ pageContent }) => {
   return (
@@ -26,6 +27,9 @@ const Homepage = ({ pageContent }) => {
           test={(node) =>
             isBlock(node, { tagName: "section", className: "skills-container" })
           }
+        />
+        <TypingTextBlock
+          test={(node) => isBlockByName(node, "sg-block/typing-text-block")}
         />
       </BlocksRenderer>
     </>
