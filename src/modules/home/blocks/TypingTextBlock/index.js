@@ -24,19 +24,21 @@ const TypingTextBlock = ({ domNode: node = defaultElement }) => {
   return (
     <p className={typingTextWrapperStyles}>
       {prefix}
-      <span className={typingTextStyles}>
-        {typedText}
-        <span
-          aria-hidden="true"
-          className={cx(
-            typingTextCursorStyles,
-            isTypingPaused && blinkStyles,
-            !continueLoop && "hide",
-          )}
-        >
-          |
+      {strings.length ? (
+        <span className={typingTextStyles}>
+          {typedText}
+          <span
+            aria-hidden="true"
+            className={cx(
+              typingTextCursorStyles,
+              isTypingPaused && blinkStyles,
+              !continueLoop && "hide",
+            )}
+          >
+            |
+          </span>
         </span>
-      </span>
+      ) : null}
       {suffix}
     </p>
   );
