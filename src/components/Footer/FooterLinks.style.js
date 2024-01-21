@@ -9,13 +9,33 @@ export const footerLinksStyles = css`
   padding: 0;
 `;
 
+const getIcons = (isLightTheme = false) => {
+  const pathPrefix = !isLightTheme ? "-white" : "";
+  const icons = {
+    "> .github-icon": {
+      content: `url("/github-mark${pathPrefix}.svg")`,
+    },
+    "> .mail-icon": {
+      content: `url("/mail${pathPrefix}.svg")`,
+    },
+    "> .linkedin-icon": {
+      content: `url("/li-in${pathPrefix}.png")`,
+    },
+  };
+  return icons;
+};
+
 export const footBtnStyles = css`
   border-radius: 50%;
-  border: 2px solid var(--color-secondary);
+  border: 2px solid var(--border-primary);
   display: flex;
   height: 20px;
   padding: 10px;
   width: 20px;
+
+  & {
+    ${getIcons()};
+  }
 
   .light &:hover,
   &:hover {
@@ -23,30 +43,6 @@ export const footBtnStyles = css`
   }
 
   .light & {
-    border-color: var(--color-primary);
-  }
-
-  & > .github-icon {
-    content: url("/github-mark-white.svg");
-  }
-
-  & > .mail-icon {
-    content: url("/mail-white.svg");
-  }
-
-  & > .linkedin-icon {
-    content: url("/li-in-white.png");
-  }
-
-  .light & > .github-icon {
-    content: url("/github-mark.svg");
-  }
-
-  .light & > .mail-icon {
-    content: url("/mail.svg");
-  }
-
-  .light & > .linkedin-icon {
-    content: url("/li-in.png");
+    ${getIcons(true)};
   }
 `;

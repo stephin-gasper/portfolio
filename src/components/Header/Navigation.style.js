@@ -1,13 +1,10 @@
 import { css } from "@linaria/core";
 
 export const navLinkStyles = css`
-  color: var(--color-secondary);
+  color: var(--text-primary);
   font-family: var(--font-secondary);
   font-size: 1.1rem;
   text-decoration: none;
-  .light & {
-    color: var(--color-primary);
-  }
   &:hover,
   &:focus {
     text-decoration-color: var(--color-underline);

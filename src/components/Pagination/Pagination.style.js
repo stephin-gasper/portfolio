@@ -28,18 +28,12 @@ export const paginationItemBtnStyles = css`
   padding: 0 0.78em;
   text-align: center;
   &:hover {
-    background-color: rgba(255, 255, 255, 0.04);
+    background-color: var(--pagination-hover);
     cursor: pointer;
-    .light & {
-      background-color: rgba(0, 0, 0, 0.06);
-    }
   }
 
   &.selected {
-    background-color: rgba(255, 255, 255, 0.09);
-    .light & {
-      background-color: rgba(0, 0, 0, 0.09);
-    }
+    background-color: var(--pagination-selected);
   }
 
   &.disabled {
@@ -59,19 +53,13 @@ export const paginationArrowStyles = css`
     display: inline-block;
     width: 0.4em;
     height: 0.4em;
-    border-right: 0.12em solid var(--color-secondary);
-    border-top: 0.12em solid var(--color-secondary);
-    .light & {
-      border-color: var(--color-primary);
-    }
+    border-right: 0.12em solid var(--border-primary);
+    border-top: 0.12em solid var(--border-primary);
   }
   .disabled &:before {
     opacity: 0.6;
-    border-right: 0.12em solid var(--color-secondary-lighter);
-    border-top: 0.12em solid var(--color-secondary-lighter);
-    .light & {
-      border-color: var(--color-primary-lighter);
-    }
+    border-right: 0.12em solid var(--border-secondary);
+    border-top: 0.12em solid var(--border-secondary);
   }
 `;
 

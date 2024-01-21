@@ -42,7 +42,7 @@ const navigationLinks = [
 ];
 
 const Header = () => {
-  const [currentTheme, setCurrentTheme] = useState("");
+  const [currentTheme, setCurrentTheme] = useState("dark");
 
   return (
     <header>

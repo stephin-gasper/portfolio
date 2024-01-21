@@ -9,11 +9,7 @@ const loaderContainer = css`
   top: 0;
   width: 100vw;
   height: 100vh;
-  background-color: var(--color-primary-lighter);
-
-  .light & {
-    background-color: var(--color-secondary-lighter);
-  }
+  background-color: var(--background-secondary);
 `;
 
 const loader = css`
@@ -22,11 +18,7 @@ const loader = css`
   border-radius: 50%;
   width: 100px;
   height: 100px;
-  color: var(--color-secondary);
-
-  .light & {
-    color: var(--color-primary);
-  }
+  color: var(--text-primary-invert);
 
   &:before,
   &:after {
