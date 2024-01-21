@@ -4,7 +4,7 @@
 
 ## Overview
 
-* This project is created as showcase of my portfolio with frontend using React/Next.js version of [Milky Way portfolio template](https://github.com/ttomczak3/Milky-Way), and backend powered by WordPress.
+* This project is created as showcase of my portfolio with frontend using React/Next.js version of [Milky Way portfolio template](https://github.com/ttomczak3/Milky-Way) (with many changes suiting my needs and major code improvements), and backend powered by WordPress.
 * The integration of [Next.js](https://nextjs.org/) as frontend and [Wordpress](https://wordpress.org/) for backend is achieved using [HeadstartWP](https://github.com/10up/headstartwp), which provides Headless CMS for WordPress.
 
 ## Getting Started
