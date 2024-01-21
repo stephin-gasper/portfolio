@@ -9,15 +9,12 @@ export const cardWrapperStyles = css`
 `;
 
 export const cardInnerStyles = css`
-  color: var(--color-secondary);
+  color: var(--text-primary);
   display: block;
   text-align: center;
   &:hover,
   &:focus {
     text-decoration: none;
-  }
-  .light & {
-    color: var(--color-primary);
   }
 `;
 

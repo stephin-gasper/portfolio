@@ -11,13 +11,84 @@
   --font-secondary: "Josefin Sans", sans-serif;
 }
 
+/** Themes */
+.dark {
+  --text-primary: var(--color-secondary);
+  --text-primary-invert: var(--color-primary);
+
+  --background-primary: var(--color-primary);
+  --background-primary-invert: var(--color-secondary);
+  --background-secondary: var(--color-primary-lighter);
+  --background-primary-invert: var(--color-secondary);
+  --background-secondary-invert: var(--color-secondary-lighter);
+
+  --border-primary: var(--color-secondary);
+  --border-secondary: var(--color-secondary-lighter);
+
+  --pagination-hover: rgba(255, 255, 255, 0.04);
+  --pagination-selected: rgba(255, 255, 255, 0.09);
+}
+
+.light {
+  --text-primary: var(--color-primary);
+  --text-primary-invert: var(--color-secondary);
+
+  --background-primary: var(--color-secondary);
+  --background-secondary: var(--color-secondary-lighter);
+  --background-primary-invert: var(--color-primary);
+  --background-secondary-invert: var(--color-primary-lighter);
+
+  --border-primary: var(--color-primary);
+  --border-secondary: var(--color-primary-lighter);
+
+  --pagination-hover: rgba(0, 0, 0, 0.06);
+  --pagination-selected: rgba(0, 0, 0, 0.09);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not(.light):not(.dark) {
+    --text-primary: var(--color-secondary);
+    --text-primary-invert: var(--color-primary);
+
+    --background-primary: var(--color-primary);
+    --background-primary-invert: var(--color-secondary);
+    --background-secondary: var(--color-primary-lighter);
+    --background-primary-invert: var(--color-secondary);
+    --background-secondary-invert: var(--color-secondary-lighter);
+
+    --border-primary: var(--color-secondary);
+    --border-secondary: var(--color-secondary-lighter);
+
+    --pagination-hover: rgba(255, 255, 255, 0.04);
+    --pagination-selected: rgba(255, 255, 255, 0.09);
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not(.light):not(.dark) {
+    --text-primary: var(--color-primary);
+    --text-primary-invert: var(--color-secondary);
+
+    --background-primary: var(--color-secondary);
+    --background-secondary: var(--color-secondary-lighter);
+    --background-primary-invert: var(--color-primary);
+    --background-secondary-invert: var(--color-primary-lighter);
+
+    --border-primary: var(--color-primary);
+    --border-secondary: var(--color-primary-lighter);
+
+    --pagination-hover: rgba(0, 0, 0, 0.06);
+    --pagination-selected: rgba(0, 0, 0, 0.09);
+  }
+}
+
 /* Resets */
 @import url("./normalize.css");
 
 /* Global styles */
 html {
-  background-color: var(--color-primary);
-  color: var(--color-secondary);
+  background-color: var(--background-primary);
+  color: var(--text-primary);
 }
 
 body {
@@ -44,10 +115,10 @@ body {
 }
 
 .skip-link:focus {
-  background-color: var(--color-secondary);
+  background-color: var(--background-primary-invert);
   clip: auto;
   clip-path: none;
-  color: var(--color-primary);
+  color: var(--text-primary-invert);
   display: block;
   font-size: 1em;
   height: auto;
@@ -155,17 +226,6 @@ a:focus {
 
   /* Corrects inability to style clickable `input` types in iOS */
   appearance: none;
-}
-
-/* Light theme */
-html.light {
-  background-color: var(--color-secondary);
-  color: var(--color-primary);
-}
-
-.light .skip-link:focus {
-  background-color: var(--color-primary);
-  color: var(--color-secondary);
 }
 
 /* Media Query */
