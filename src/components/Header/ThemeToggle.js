@@ -7,13 +7,13 @@ import {
   themeToggleBtnStyles,
 } from "./ThemeToggle.style";
 
-const ThemeToggle = ({ setCurrentTheme }) => {
+const ThemeToggle = ({ currentTheme, setCurrentTheme }) => {
   const handleToggleClick = () => {
-    const element = document.documentElement;
-    element.classList.toggle("light");
+    const theme = currentTheme === "light" ? "dark" : "light";
 
-    const isLight = element.classList.contains("light");
-    const theme = isLight ? "light" : "dark";
+    const element = document.documentElement;
+    element.classList.toggle(currentTheme);
+    element.classList.toggle(theme);
     setCurrentTheme(theme);
     localStorage.setItem("theme", theme);
   };
@@ -33,13 +33,7 @@ const ThemeToggle = ({ setCurrentTheme }) => {
     })();
 
     setCurrentTheme(theme);
-
-    if (theme === "dark") {
-      document.documentElement.classList.remove("light");
-    } else {
-      document.documentElement.classList.add("light");
-    }
-
+    document.documentElement.classList.toggle(theme);
     window.localStorage.setItem("theme", theme);
   }, [setCurrentTheme]);
 
@@ -73,6 +67,7 @@ const ThemeToggle = ({ setCurrentTheme }) => {
 };
 
 ThemeToggle.propTypes = {
+  currentTheme: PropTypes.oneOf(["light", "dark"]).isRequired,
   setCurrentTheme: PropTypes.func.isRequired,
 };
 
