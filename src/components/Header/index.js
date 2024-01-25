@@ -42,14 +42,17 @@ const navigationLinks = [
 ];
 
 const Header = () => {
-  const [currentTheme, setCurrentTheme] = useState("dark");
+  const [currentTheme, setCurrentTheme] = useState("light");
 
   return (
     <header>
       <nav className={navStyles}>
         <Logo currentTheme={currentTheme} />
         <Navigation navigationLinks={navigationLinks} />
-        <ThemeToggle setCurrentTheme={setCurrentTheme} />
+        <ThemeToggle
+          currentTheme={currentTheme}
+          setCurrentTheme={setCurrentTheme}
+        />
       </nav>
     </header>
   );

@@ -26,7 +26,7 @@ const Logo = ({ currentTheme }) => (
 );
 
 Logo.propTypes = {
-  currentTheme: PropTypes.string.isRequired,
+  currentTheme: PropTypes.oneOf(["light", "dark"]).isRequired,
 };
 
 export default Logo;
