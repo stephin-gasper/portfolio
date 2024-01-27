@@ -16,7 +16,11 @@ import Details from "@/modules/work/Details";
 import Loader from "@/components/Loader";
 
 import { PLATFORM_MAP, TECH_STACK_MAP } from "@/modules/work/Work.constants";
-import { projectImageWrapperStyles } from "@/modules/work/Work.style";
+import {
+  projectImageWrapperStyles,
+  projectImageStyles,
+} from "@/modules/work/Work.style";
+import { cx } from "@linaria/core";
 
 /**
  * Single page for work CPT
@@ -68,6 +72,7 @@ const WorkPage = () => {
           }
           width="100%"
           alt="project"
+          className={cx(projectImageStyles, "box-shadow")}
         />
       </div>
     </>
