@@ -27,6 +27,9 @@
 
   --pagination-hover: rgba(255, 255, 255, 0.04);
   --pagination-selected: rgba(255, 255, 255, 0.09);
+
+  --shadow-color: #fdebf326;
+  --box-ring-color: var(--color-secondary);
 }
 
 .light {
@@ -43,6 +46,9 @@
 
   --pagination-hover: rgba(0, 0, 0, 0.06);
   --pagination-selected: rgba(0, 0, 0, 0.09);
+
+  --shadow-color: #1e1e2e26;
+  --ring-color: var(--color-primary);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -61,6 +67,9 @@
 
     --pagination-hover: rgba(255, 255, 255, 0.04);
     --pagination-selected: rgba(255, 255, 255, 0.09);
+
+    --shadow-color: #fdebf31a;
+    --box-ring-color: var(--color-secondary);
   }
 }
 
@@ -79,6 +88,9 @@
 
     --pagination-hover: rgba(0, 0, 0, 0.06);
     --pagination-selected: rgba(0, 0, 0, 0.09);
+
+    --shadow-color: #1e1e2e26;
+    --ring-color: var(--color-primary);
   }
 }
 
@@ -152,7 +164,6 @@ h2 {
 
 h3 {
   font-size: 1.5rem;
-  font-weight: normal;
 }
 
 /* Paragraphs */
@@ -175,6 +186,16 @@ a:hover,
 a:focus {
   text-decoration: underline var(--color-highlight) 0.114em;
   text-underline-offset: 0.341em;
+}
+
+/* Box Shadow */
+.box-shadow {
+  --ring-offset-shadow: 0 0 var(--ring-color);
+  --ring-shadow: 0 0 var(--ring-color);
+  --shadow: 0 10px 15px -3px var(--shadow-color),
+    0 4px 6px -4px var(--shadow-color);
+  box-shadow: var(--ring-offset-shadow, 0 0 #0000),
+    var(--ring-shadow, 0 0 #0000), var(--shadow);
 }
 
 /* Accessibility */

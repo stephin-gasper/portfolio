@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import { cx } from "@linaria/core";
 import Link from "next/link";
 import { HtmlDecoder } from "@headstartwp/core/react";
 
@@ -13,7 +14,7 @@ import {
 const Card = ({ href, imgSrc, title, children }) => {
   return (
     <li className={cardWrapperStyles}>
-      <Link href={href} className={cardInnerStyles}>
+      <Link href={href} className={cx(cardInnerStyles, "box-shadow")}>
         <img src={imgSrc} className={cardImageStyles} alt="project" />
         <h3 className={cardtitleStyles}>
           <HtmlDecoder html={title} />
