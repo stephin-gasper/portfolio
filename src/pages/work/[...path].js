@@ -15,7 +15,8 @@ import FeaturedImage from "@/components/FeaturedImage";
 import Details from "@/modules/work/Details";
 import Loader from "@/components/Loader";
 
-import { PLATFORM_MAP, TECH_STACK_MAP } from "@/modules/work/Work.constants";
+import { PLATFORM_MAP } from "@/modules/work/Work.constants";
+import { TECH_STACK_MAP } from "@/modules/works/Works.constants";
 import {
   projectImageWrapperStyles,
   projectImageStyles,
