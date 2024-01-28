@@ -105,7 +105,7 @@ html {
 
 body {
   font-family: var(--font-secondary);
-  margin: 0 24px;
+  margin: 0 auto;
   text-align: justify;
 }
 
@@ -250,9 +250,16 @@ a:focus {
 }
 
 /* Media Query */
+/** sm: ≥568px */
 @media screen and (min-width: 35.5em) {
   body {
-    max-width: 33.75rem;
-    margin: 0 auto;
+    max-width: calc(35.5em - 1.25em);
+  }
+}
+
+/** md: ≥768px */
+@media screen and (min-width: 48em) {
+  body {
+    max-width: 38.25em;
   }
 }

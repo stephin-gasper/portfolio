@@ -15,8 +15,7 @@ export const cardInnerStyles = css`
   border-radius: 0.75rem;
   color: var(--text-primary);
   display: block;
-  text-align: center;
-  padding-bottom: 1rem;
+  text-align: left;
   &:hover,
   &:focus {
     text-decoration: none;
@@ -26,17 +25,23 @@ export const cardInnerStyles = css`
   }
 `;
 
+export const cardContentStyles = css`
+  padding: 1.25rem 0.938rem;
+`;
+
 export const cardImageStyles = css`
   border-top-left-radius: 0.75rem;
   border-top-right-radius: 0.75rem;
-  max-height: 350px;
+  display: block;
+  max-height: 21.875rem;
   object-fit: cover;
   object-position: top;
   width: 100%;
 `;
 
 export const cardtitleStyles = css`
-  margin: 0.584em 0 0;
+  margin: 0;
+  font-size: 1.25rem;
 `;
 
 export const cardDescriptionStyles = css`
@@ -44,4 +49,18 @@ export const cardDescriptionStyles = css`
   line-height: 1.5;
   margin: 0.5em 0 0;
   text-indent: 0;
+`;
+
+export const techStackHighlightStyles = css`
+  font-size: 0.75rem;
+  line-height: 1;
+  margin: 0;
+  text-indent: 0;
+  padding-top: 0.625rem;
+  text-align: right;
+`;
+
+export const teckStackHighlightItems = css`
+  text-decoration: underline var(--color-highlight) 0.17em;
+  text-underline-offset: 0.34em;
 `;

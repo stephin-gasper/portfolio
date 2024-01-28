@@ -52,12 +52,14 @@ const WorksPage = () => {
             {works.map((work) => (
               <Card
                 key={work.id}
+                id={work.id}
                 href={`/work/${work.slug}`}
                 imgSrc={
                   work.meta_box.featured_image_url ||
                   work._embedded["wp:featuredmedia"]?.[0]?.source_url
                 }
                 title={work.title.rendered}
+                techStackHighlights={work.meta_box.tech_stack_highlighted}
               >
                 {work.excerpt.rendered}
               </Card>
