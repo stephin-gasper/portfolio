@@ -35,7 +35,9 @@ const Card = ({ id, href, imgSrc, title, techStackHighlights, children }) => {
                   <span className={teckStackHighlightItems}>
                     {TECH_STACK_MAP[item]}
                   </span>
-                  {(index + 1) % techStackHighlights.length !== 0 ? " . " : ""}
+                  {(index + 1) % techStackHighlights.length !== 0 ? (
+                    <span>&nbsp;.&nbsp;</span>
+                  ) : null}
                 </Fragment>
               ))}
             </p>

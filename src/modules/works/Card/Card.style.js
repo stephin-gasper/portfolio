@@ -52,12 +52,14 @@ export const cardDescriptionStyles = css`
 `;
 
 export const techStackHighlightStyles = css`
+  display: flex;
+  flex-wrap: wrap;
   font-size: 0.75rem;
-  line-height: 1;
+  justify-content: flex-end;
+  line-height: 1.84;
   margin: 0;
-  text-indent: 0;
   padding-top: 0.625rem;
-  text-align: right;
+  text-indent: 0;
 `;
 
 export const teckStackHighlightItems = css`
