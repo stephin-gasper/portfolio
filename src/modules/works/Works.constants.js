@@ -20,3 +20,5 @@ export const TECH_STACK_MAP = {
   react_testing_library: "React Testing Library",
   react_native_testing_library: "React Native Testing Library",
 };
+
+export const WORK_PLACEHOLDER_IMAGE_PATH = "/placeholder-work.png";
