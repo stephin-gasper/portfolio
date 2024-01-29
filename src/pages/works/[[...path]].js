@@ -55,7 +55,7 @@ const WorksPage = () => {
                 id={work.id}
                 href={`/work/${work.slug}`}
                 imgSrc={
-                  work.meta_box.featured_image_url ||
+                  work.meta_box.featured_image_url?.[0] ||
                   work._embedded["wp:featuredmedia"]?.[0]?.source_url
                 }
                 title={work.title.rendered}
