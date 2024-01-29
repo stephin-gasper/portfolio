@@ -17,11 +17,7 @@ import Loader from "@/components/Loader";
 
 import { PLATFORM_MAP } from "@/modules/work/Work.constants";
 import { TECH_STACK_MAP } from "@/modules/works/Works.constants";
-import {
-  projectImageWrapperStyles,
-  projectImageStyles,
-} from "@/modules/work/Work.style";
-import { cx } from "@linaria/core";
+import ProjectImageSlider from "@/modules/work/ProjectImageSlider";
 
 /**
  * Single page for work CPT
@@ -45,6 +41,16 @@ const WorkPage = () => {
     [data.post.meta_box.tech_stack],
   );
 
+  const imgSrcs = useMemo(() => {
+    const srcList =
+      data.post.meta_box.featured_image_url ||
+      data.post._embedded["wp:featuredmedia"].map((media) => media.source_url);
+    return srcList.map((src, index) => ({
+      src,
+      id: `featured_image_${index}`,
+    }));
+  }, [data.post._embedded, data.post.meta_box.featured_image_url]);
+
   if (error) {
     return "error";
   }
@@ -65,17 +71,7 @@ const WorkPage = () => {
       <Details name="Domain" value={data.post.meta_box.domain} />
       <Details name="Website" value={data.post.meta_box.website_url} isLink />
       <Details name="Github" value={data.post.meta_box.github_url} isLink />
-      <div className={projectImageWrapperStyles}>
-        <img
-          src={
-            data.post.meta_box.featured_image_url ||
-            data.post._embedded["wp:featuredmedia"]?.[0]?.source_url
-          }
-          width="100%"
-          alt="project"
-          className={cx(projectImageStyles, "box-shadow")}
-        />
-      </div>
+      <ProjectImageSlider imgSrcs={imgSrcs} />
     </>
   );
 };

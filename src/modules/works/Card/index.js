@@ -4,7 +4,10 @@ import { cx } from "@linaria/core";
 import Link from "next/link";
 import { HtmlDecoder } from "@headstartwp/core/react";
 
-import { TECH_STACK_MAP } from "../Works.constants";
+import {
+  TECH_STACK_MAP,
+  WORK_PLACEHOLDER_IMAGE_PATH,
+} from "../Works.constants";
 import {
   cardDescriptionStyles,
   cardImageStyles,
@@ -60,7 +63,7 @@ Card.propTypes = {
 };
 
 Card.defaultProps = {
-  imgSrc: "/placeholder-archive.png",
+  imgSrc: WORK_PLACEHOLDER_IMAGE_PATH,
   techStackHighlights: [],
 };
 
