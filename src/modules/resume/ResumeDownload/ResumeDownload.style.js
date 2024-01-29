@@ -1,7 +1,7 @@
 import { css } from "@linaria/core";
 
 export const resumeDownloadContainerStyles = css`
-  margin-top: 1.25rem;
+  margin-top: 1.875rem;
   text-align: center;
 `;
 
