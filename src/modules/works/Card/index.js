@@ -16,37 +16,35 @@ import {
   teckStackHighlightItems,
 } from "./Card.style";
 
-const Card = ({ id, href, imgSrc, title, techStackHighlights, children }) => {
-  return (
-    <li className={cardWrapperStyles}>
-      <Link href={href} className={cx(cardInnerStyles, "box-shadow")}>
-        <img src={imgSrc} className={cardImageStyles} alt="project" />
-        <div className={cardContentStyles}>
-          <h3 className={cardtitleStyles}>
-            <HtmlDecoder html={title} />
-          </h3>
-          <p className={cardDescriptionStyles}>
-            <HtmlDecoder html={children} />
+const Card = ({ id, href, imgSrc, title, techStackHighlights, children }) => (
+  <li className={cardWrapperStyles}>
+    <Link href={href} className={cx(cardInnerStyles, "box-shadow")}>
+      <img src={imgSrc} className={cardImageStyles} alt="project" />
+      <div className={cardContentStyles}>
+        <h3 className={cardtitleStyles}>
+          <HtmlDecoder html={title} />
+        </h3>
+        <p className={cardDescriptionStyles}>
+          <HtmlDecoder html={children} />
+        </p>
+        {techStackHighlights.length ? (
+          <p className={techStackHighlightStyles}>
+            {techStackHighlights.map((item, index) => (
+              <Fragment key={`${id}-${item}`}>
+                <span className={teckStackHighlightItems}>
+                  {TECH_STACK_MAP[item]}
+                </span>
+                {(index + 1) % techStackHighlights.length !== 0 ? (
+                  <span>&nbsp;.&nbsp;</span>
+                ) : null}
+              </Fragment>
+            ))}
           </p>
-          {techStackHighlights.length ? (
-            <p className={techStackHighlightStyles}>
-              {techStackHighlights.map((item, index) => (
-                <Fragment key={`${id}-${item}`}>
-                  <span className={teckStackHighlightItems}>
-                    {TECH_STACK_MAP[item]}
-                  </span>
-                  {(index + 1) % techStackHighlights.length !== 0 ? (
-                    <span>&nbsp;.&nbsp;</span>
-                  ) : null}
-                </Fragment>
-              ))}
-            </p>
-          ) : null}
-        </div>
-      </Link>
-    </li>
-  );
-};
+        ) : null}
+      </div>
+    </Link>
+  </li>
+);
 
 Card.propTypes = {
   id: PropTypes.number.isRequired,
