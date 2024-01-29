@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import PropTypes from "prop-types";
 import { cx } from "@linaria/core";
 
@@ -34,6 +34,7 @@ const range = (start, end) => {
  * @param {number} props.pageSize - Represents the maximum data that is visible in a single page
  * @param {number} props.siblingCount - Represents the min number of page buttons to be shown on each side of the current page button. Defaults to 1.
  * @param {number} props.totalCount - Represents the total count of data available from the source
+ * @param {string} props.paginationContextName - Context name where pagination is used.
  *
  * @returns {import("react").ReactNode} - PageContent JSX element.
  */
@@ -43,7 +44,10 @@ const Pagination = ({
   pageSize,
   siblingCount,
   totalCount,
+  paginationContextName,
 }) => {
+  const [liveRegionText, setLiveRegionText] = useState("");
+
   const paginationRange = useMemo(() => {
     const totalPageCount = Math.ceil(totalCount / pageSize);
 
@@ -117,102 +121,134 @@ const Pagination = ({
     return null;
   }
 
+  const getLiveRegionText = (pageNumber) =>
+    `${paginationContextName} ${pageNumber} of ${totalCount}`;
+
   const onNext = () => {
     onPageChange(currentPage + 1);
+    setLiveRegionText(getLiveRegionText(currentPage + 1));
   };
 
   const onPrevious = () => {
-    onPageChange(currentPage - 1);
+    onPageChange(currentPage - 1, "previous");
+    setLiveRegionText(getLiveRegionText(currentPage - 1));
   };
 
   const lastPage = paginationRange[paginationRange.length - 1];
 
   const getAcccessiblityTextForPageNumber = (pageNumber) => {
     if (pageNumber === 1) {
-      return <span className="visually-hidden"> (first page)</span>;
+      return (
+        <span className="visually-hidden">
+          &nbsp;(First {paginationContextName})
+        </span>
+      );
     }
     if (pageNumber === lastPage) {
-      return <span className="visually-hidden"> (last page)</span>;
+      return (
+        <span className="visually-hidden">
+          &nbsp;(Last {paginationContextName})
+        </span>
+      );
     }
     return null;
   };
 
   return (
-    <nav aria-label="pagination">
-      <ul className={paginationContainerStyles}>
-        {/* Left navigation arrow */}
-        <li className={paginationItemStyles}>
-          <button
-            type="button"
-            onClick={onPrevious}
-            className={cx(
-              "btn-reset",
-              paginationItemBtnStyles,
-              currentPage === 1 && "disabled",
-            )}
-          >
-            <span
-              className={cx(paginationArrowStyles, paginationArrowLeftStyles)}
-            />
-            <span className="visually-hidden">Previous Page</span>
-          </button>
-        </li>
-        {paginationRange.map((pageNumber, index) => {
-          // If the pageItem is a DOT, render the DOTS unicode character
-          if (pageNumber === DOTS) {
+    <>
+      <nav aria-label="pagination">
+        <ul className={paginationContainerStyles}>
+          {/* Left navigation arrow */}
+          <li className={paginationItemStyles}>
+            <button
+              type="button"
+              onClick={onPrevious}
+              className={cx(
+                "btn-reset",
+                paginationItemBtnStyles,
+                currentPage === 1 && "disabled",
+              )}
+            >
+              <span
+                className={cx(paginationArrowStyles, paginationArrowLeftStyles)}
+              />
+              <span className="visually-hidden">
+                Previous {paginationContextName}
+              </span>
+            </button>
+          </li>
+          {paginationRange.map((pageNumber, index) => {
+            // If the pageItem is a DOT, render the DOTS unicode character
+            if (pageNumber === DOTS) {
+              return (
+                <li
+                  // eslint-disable-next-line react/no-array-index-key
+                  key={`paginate-dots-${index}`}
+                  className={cx(paginationItemStyles, paginationItemDotsStyles)}
+                >
+                  &#8230;
+                </li>
+              );
+            }
+            // Render our Page Pills
             return (
               <li
-                // eslint-disable-next-line react/no-array-index-key
-                key={`paginate-dots-${index}`}
-                className={cx(paginationItemStyles, paginationItemDotsStyles)}
+                key={`paginate-${pageNumber}`}
+                className={paginationItemStyles}
               >
-                &#8230;
+                <button
+                  type="button"
+                  className={cx(
+                    "btn-reset",
+                    paginationItemBtnStyles,
+                    pageNumber === currentPage && "selected",
+                  )}
+                  {...(pageNumber === currentPage
+                    ? { "aria-current": true }
+                    : {})}
+                  onClick={() => {
+                    onPageChange(pageNumber);
+                    setLiveRegionText("");
+                  }}
+                >
+                  <span className="visually-hidden">
+                    {paginationContextName}
+                  </span>
+                  {pageNumber}
+                  {getAcccessiblityTextForPageNumber(pageNumber)}
+                </button>
               </li>
             );
-          }
-          // Render our Page Pills
-          return (
-            <li key={`paginate-${pageNumber}`} className={paginationItemStyles}>
-              <button
-                type="button"
+          })}
+          {/*  Right Navigation arrow */}
+          <li className={paginationItemStyles}>
+            <button
+              type="button"
+              onClick={onNext}
+              className={cx(
+                "btn-reset",
+                paginationItemBtnStyles,
+                currentPage === lastPage && "disabled",
+              )}
+            >
+              <span
                 className={cx(
-                  "btn-reset",
-                  paginationItemBtnStyles,
-                  pageNumber === currentPage && "selected",
+                  paginationArrowStyles,
+                  paginationArrowRightStyles,
                 )}
-                {...(pageNumber === currentPage
-                  ? { "aria-current": "page" }
-                  : {})}
-                onClick={() => {
-                  onPageChange(pageNumber);
-                }}
-              >
-                <span className="visually-hidden">Page</span>
-                {pageNumber}
-                {getAcccessiblityTextForPageNumber(pageNumber)}
-              </button>
-            </li>
-          );
-        })}
-        {/*  Right Navigation arrow */}
-        <li className={paginationItemStyles}>
-          <button
-            type="button"
-            onClick={onNext}
-            className={cx(
-              "btn-reset",
-              paginationItemBtnStyles,
-              currentPage === lastPage && "disabled",
-            )}
-          >
-            <span
-              className={cx(paginationArrowStyles, paginationArrowRightStyles)}
-            />
-            <span className="visually-hidden">Next Page</span>
-          </button>
-        </li>
-      </ul>
-    </nav>
+              />
+              <span className="visually-hidden">
+                Next {paginationContextName}
+              </span>
+            </button>
+          </li>
+        </ul>
+      </nav>
+      {/*  Live region */}
+      <div aria-live="polite" aria-atomic="true" className="visually-hidden">
+        {liveRegionText}
+      </div>
+    </>
   );
 };
 
@@ -222,10 +258,12 @@ Pagination.propTypes = {
   pageSize: PropTypes.number.isRequired,
   siblingCount: PropTypes.number,
   totalCount: PropTypes.number.isRequired,
+  paginationContextName: PropTypes.string,
 };
 
 Pagination.defaultProps = {
   siblingCount: 1,
+  paginationContextName: "Page",
 };
 
 export default Pagination;

@@ -21,7 +21,7 @@ export const paginationItemBtnStyles = css`
   align-items: center;
   border-radius: 50%;
   display: inline-flex;
-  font-size: 1em;
+  font-size: 1.25em;
   height: 2em;
   justify-content: center;
   line-height: 1;
