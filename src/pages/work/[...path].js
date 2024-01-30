@@ -18,6 +18,7 @@ import Loader from "@/components/Loader";
 import { PLATFORM_MAP } from "@/modules/work/Work.constants";
 import { TECH_STACK_MAP } from "@/modules/works/Works.constants";
 import ProjectImageSlider from "@/modules/work/ProjectImageSlider";
+import { detailsWrapperStyles } from "@/modules/work/Work.style";
 
 /**
  * Single page for work CPT
@@ -66,11 +67,13 @@ const WorkPage = () => {
         <HtmlDecoder html={data.post.title.rendered} />
       </h2>
       <SafeHtml html={data.post.content.rendered} />
-      <Details name="Platform" value={platform} />
-      <Details name="Stack" value={techStack} />
-      <Details name="Domain" value={data.post.meta_box.domain} />
-      <Details name="Website" value={data.post.meta_box.website_url} isLink />
-      <Details name="Github" value={data.post.meta_box.github_url} isLink />
+      <section className={detailsWrapperStyles}>
+        <Details name="Platform" value={platform} />
+        <Details name="Stack" value={techStack} />
+        <Details name="Domain" value={data.post.meta_box.domain} />
+        <Details name="Website" value={data.post.meta_box.website_url} isLink />
+        <Details name="Github" value={data.post.meta_box.github_url} isLink />
+      </section>
       <ProjectImageSlider imgSrcs={imgSrcs} />
     </>
   );
