@@ -107,7 +107,6 @@ html {
 body {
   font-family: var(--font-secondary);
   margin: 0 auto;
-  text-align: justify;
   padding: 0 1.25rem;
 }
 
