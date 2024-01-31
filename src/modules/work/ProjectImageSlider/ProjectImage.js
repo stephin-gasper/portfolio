@@ -8,11 +8,12 @@ import {
 import { PROJECT_IMAGE_ALT } from "./ProjectImageSlider.constants";
 
 const ProjectImage = ({ src, containerAccessibility }) => (
-  <li
-    className={cx(projectImageSlideWrapperStyles, "box-shadow")}
-    {...containerAccessibility}
-  >
-    <img src={src} alt={PROJECT_IMAGE_ALT} className={projectImageStyles} />
+  <li className={projectImageSlideWrapperStyles} {...containerAccessibility}>
+    <img
+      src={src}
+      alt={PROJECT_IMAGE_ALT}
+      className={cx(projectImageStyles, "box-shadow")}
+    />
   </li>
 );
 
