@@ -35,7 +35,7 @@ const navigationLinks = [
   },
   {
     id: "3",
-    href: "https://github.com/stephin-gasper",
+    href: "https://github.com/stephin-gasper/portfolio",
     label: "Github",
     isExternal: true,
   },
