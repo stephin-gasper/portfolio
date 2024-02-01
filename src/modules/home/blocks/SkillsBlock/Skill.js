@@ -19,7 +19,7 @@ const skillImageStyles = css`
 const Skill = ({ src, alt }) => {
   return (
     <figure className={figureStyles}>
-      <img alt={alt} src={src} className={skillImageStyles} />
+      <img alt={alt} title={alt} src={src} className={skillImageStyles} />
     </figure>
   );
 };
