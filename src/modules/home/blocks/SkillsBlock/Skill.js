@@ -8,11 +8,11 @@ const figureStyles = css`
 `;
 
 const skillImageStyles = css`
-  width: 1.875rem;
-  height: 1.875rem;
+  width: 3.438rem;
+  height: 3.438rem;
   ${media.sm} {
-    width: 2.875rem;
-    height: 2.875rem;
+    width: 4.688rem;
+    height: 4.688rem;
   }
 `;
 
