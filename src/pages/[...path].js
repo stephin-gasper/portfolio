@@ -6,7 +6,6 @@ import {
   usePosts,
   useAppSettings,
 } from "@headstartwp/next";
-import { BlocksRenderer } from "@headstartwp/core/react";
 import { getWPUrl, removeSourceUrl } from "@headstartwp/core";
 
 import { resolveBatch } from "@/utils/promises";
@@ -26,12 +25,9 @@ const SinglePostsPage = () => {
     return "error...";
   }
 
-  return (
-    <div>
-      <PageContent params={singleParams} />
-      <BlocksRenderer html={data.post.content.rendered} />
-    </div>
-  );
+  const title = data.post.title.rendered;
+
+  return <PageContent params={title} />;
 };
 
 export default SinglePostsPage;

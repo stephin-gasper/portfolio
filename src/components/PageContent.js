@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { usePost } from "@headstartwp/next";
-import { HtmlDecoder } from "@headstartwp/core/react";
+import { HtmlDecoder, BlocksRenderer } from "@headstartwp/core/react";
 
 import Loader from "./Loader";
 
@@ -23,9 +23,12 @@ export const PageContent = ({ params }) => {
   }
 
   return (
-    <h1>
-      <HtmlDecoder html={data.post.title.rendered} />
-    </h1>
+    <>
+      <h1>
+        <HtmlDecoder html={data.post.title.rendered} />
+      </h1>
+      <BlocksRenderer html={data.post.content.rendered} />
+    </>
   );
 };
 
