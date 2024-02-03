@@ -199,6 +199,19 @@ a:focus {
     var(--ring-shadow, 0 0 #0000), var(--shadow);
 }
 
+/* Images */
+
+.dyamic-image-wrapper {
+  position: relative;
+}
+
+.dyamic-image {
+  width: 100% !important;
+  position: relative !important;
+  height: unset !important;
+  object-fit: contain;
+}
+
 /* Accessibility */
 /*
  * Hide visually only - remains available to Assistive Technology.
