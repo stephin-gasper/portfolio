@@ -10,19 +10,33 @@ class MyDocument extends Document {
       <Html lang="en">
         <Head>
           {/* font */}
-          <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+          {/**
+           * Preload and load fonts using various methods.
+           *
+           * For more information, see:
+           * {@link https://csswizardry.com/2020/05/the-fastest-google-fonts/ The Fastest Google Fonts}
+           */}
+
+          {/* #Preemptively warm up the fonts’ origin. */}
           <link
             rel="preconnect"
             href="https://fonts.gstatic.com"
             crossOrigin="true"
           />
+
+          {/* ##Initiate a high-priority, asynchronous fetch for the CSS file. Works in most modern browsers. */}
           <link
             rel="preload"
             as="style"
             href="https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Pacifico&display=swap"
-            crossOrigin="true"
           />
-          {/* #workaround added to fix onload getting removed in displayed output */}
+          {/**
+           * Initiate a low-priority, asynchronous fetch that gets applied to the page
+           *    only after it’s arrived. Works in all browsers with JavaScript enabled.
+           *
+           * workaround added to fix onload getting removed in displayed output
+           */}
           <style
             // eslint-disable-next-line react/no-danger
             dangerouslySetInnerHTML={{
@@ -32,11 +46,17 @@ class MyDocument extends Document {
                   rel="stylesheet"
                   href="https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Pacifico&display=swap"
                   media="print"
-                  onload="this.media='all';"
+                  onLoad="this.media='all';"
                 />
               <style>`,
             }}
           />
+          {/**
+           * In the unlikely event that a visitor has intentionally disabled
+           *    JavaScript, fall back to the original method. The good news is that,
+           *    although this is a render-blocking request, it can still make use of the
+           *    preconnect which makes it marginally faster than the default.
+           */}
           <noscript>
             <link
               href="https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Pacifico&display=swap"
