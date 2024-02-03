@@ -24,6 +24,9 @@ const nextConfig = {
 
     return config;
   },
+  images: {
+    domains: ["gistcdn.githack.com", "i.postimg.cc", "github.com"],
+  },
 };
 
 module.exports = withHeadlessConfig(nextConfig, headlessConfig);
