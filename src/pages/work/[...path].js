@@ -7,6 +7,8 @@ import {
 } from "@headstartwp/next";
 import { HtmlDecoder, SafeHtml } from "@headstartwp/core/react";
 import { useMemo } from "react";
+import Head from "next/head";
+import { stripTags } from "@headstartwp/core";
 
 import { workParams } from "@/params";
 import { resolveBatch } from "@/utils/promises";
@@ -19,6 +21,7 @@ import { PLATFORM_MAP } from "@/modules/work/Work.constants";
 import { TECH_STACK_MAP } from "@/modules/works/Works.constants";
 import ProjectImageSlider from "@/modules/work/ProjectImageSlider";
 import { detailsWrapperStyles } from "@/modules/work/Work.style";
+import PageSEO from "@/components/PageSEO";
 
 /**
  * Single page for work CPT
@@ -26,31 +29,31 @@ import { detailsWrapperStyles } from "@/modules/work/Work.style";
  * @returns {import("react").ReactNode} - WorkPage JSX element.
  */
 const WorkPage = () => {
-  const { error, loading, data } = usePost(workParams);
+  const {
+    error,
+    loading,
+    data: { post: { title, excerpt, content, meta_box, _embedded } = {} } = {},
+  } = usePost(workParams);
 
   const platform = useMemo(
-    () =>
-      data.post.meta_box.platform.map((item) => PLATFORM_MAP[item]).join(", "),
-    [data.post.meta_box.platform],
+    () => meta_box.platform.map((item) => PLATFORM_MAP[item]).join(", "),
+    [meta_box.platform],
   );
 
   const techStack = useMemo(
-    () =>
-      data.post.meta_box.tech_stack
-        .map((item) => TECH_STACK_MAP[item])
-        .join(", "),
-    [data.post.meta_box.tech_stack],
+    () => meta_box.tech_stack.map((item) => TECH_STACK_MAP[item]).join(", "),
+    [meta_box.tech_stack],
   );
 
   const imgSrcs = useMemo(() => {
     const srcList =
-      data.post.meta_box.featured_image_url ||
-      data.post._embedded["wp:featuredmedia"].map((media) => media.source_url);
+      meta_box.featured_image_url ||
+      _embedded["wp:featuredmedia"].map((media) => media.source_url);
     return srcList.map((src, index) => ({
       src,
       id: `featured_image_${index}`,
     }));
-  }, [data.post._embedded, data.post.meta_box.featured_image_url]);
+  }, [_embedded, meta_box.featured_image_url]);
 
   if (error) {
     return "error";
@@ -62,17 +65,25 @@ const WorkPage = () => {
 
   return (
     <>
+      <Head>
+        {/* Resource hints for assets */}
+        <link rel="preconnect" href="https://i.postimg.cc" />
+      </Head>
+      <PageSEO
+        title={stripTags(title.rendered).trim()}
+        description={stripTags(excerpt.rendered).trim()}
+      />
       <FeaturedImage src="/laptop.webp" alt="Raccoon Laptop Gif" />
       <h2>
-        <HtmlDecoder html={data.post.title.rendered} />
+        <HtmlDecoder html={title.rendered} />
       </h2>
-      <SafeHtml html={data.post.content.rendered} />
+      <SafeHtml html={content.rendered} />
       <section className={detailsWrapperStyles}>
         <Details name="Platform" value={platform} />
         <Details name="Stack" value={techStack} />
-        <Details name="Domain" value={data.post.meta_box.domain} />
-        <Details name="Website" value={data.post.meta_box.website_url} isLink />
-        <Details name="Github" value={data.post.meta_box.github_url} isLink />
+        <Details name="Domain" value={meta_box.domain} />
+        <Details name="Website" value={meta_box.website_url} isLink />
+        <Details name="Github" value={meta_box.github_url} isLink />
       </section>
       <ProjectImageSlider imgSrcs={imgSrcs} />
     </>

@@ -4,22 +4,20 @@ import {
   handleError,
   useAppSettings,
 } from "@headstartwp/next";
-import Head from "next/head";
+
 import { resolveBatch } from "@/utils/promises";
 
-const ServerErrorPage = () => {
-  const { data } = useAppSettings();
+import PageSEO from "@/components/PageSEO";
 
-  return (
-    <>
-      <Head>
-        <title>Error - {data.settings.site_name} </title>
-        <meta name="description" content={data.settings.site_desc} />
-      </Head>
-      <h1>500 - Internal Server Error</h1>
-    </>
-  );
-};
+const ServerErrorPage = () => (
+  <>
+    <PageSEO title="Error" />
+
+    <h1 style={{ textAlign: "center", paddingTop: 40 }}>
+      500 - Internal Server Error
+    </h1>
+  </>
+);
 
 export async function getStaticProps(context) {
   try {
