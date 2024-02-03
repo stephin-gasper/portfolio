@@ -25,7 +25,24 @@ const nextConfig = {
     return config;
   },
   images: {
-    domains: ["gistcdn.githack.com", "i.postimg.cc", "github.com"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "gistcdn.githack.com",
+        port: "",
+      },
+      {
+        protocol: "https",
+        hostname: "i.postimg.cc",
+        port: "",
+      },
+      {
+        protocol: "https",
+        hostname: "github.com",
+        port: "",
+        pathname: "/stephin-gasper/**",
+      },
+    ],
   },
 };
 
