@@ -9,14 +9,7 @@ const gifWrapperStyles = css`
 
 const FeaturedImage = ({ src, alt }) => (
   <div className={gifWrapperStyles}>
-    <Image
-      width="300"
-      height="259"
-      alt={alt}
-      src={src}
-      placeholder="blur"
-      blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
-    />
+    <Image width="300" height="259" alt={alt} src={src} />
   </div>
 );
 
