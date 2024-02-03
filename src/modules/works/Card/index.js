@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { cx } from "@linaria/core";
 import Link from "next/link";
 import { HtmlDecoder } from "@headstartwp/core/react";
+import Image from "next/image";
 
 import {
   TECH_STACK_MAP,
@@ -22,7 +23,17 @@ import {
 const Card = ({ id, href, imgSrc, title, techStackHighlights, children }) => (
   <li className={cardWrapperStyles}>
     <Link href={href} className={cx(cardInnerStyles, "box-shadow")}>
-      <img src={imgSrc} className={cardImageStyles} alt="project" />
+      <div className="dyamic-image-wrapper">
+        <Image
+          src={imgSrc}
+          alt="project"
+          fill
+          sizes="100vw"
+          placeholder="blur"
+          blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          className={cx(cardImageStyles, "dyamic-image")}
+        />
+      </div>
       <div className={cardContentStyles}>
         <h3 className={cardtitleStyles}>
           <HtmlDecoder html={title} />
