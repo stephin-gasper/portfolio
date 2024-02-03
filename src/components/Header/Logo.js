@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import Link from "next/link";
 import { css } from "@linaria/core";
+import Image from "next/image";
 
 import { media } from "@/styles/breakpoints";
 
@@ -16,11 +17,12 @@ const titleLinkStyles = css`
 
 const Logo = ({ currentTheme }) => (
   <Link href="/" className={titleLinkStyles}>
-    <img
+    <Image
       src={`/logo-${currentTheme}-theme.svg`}
       alt="stephin portfolio home"
       width={70}
       height={45}
+      unoptimized
     />
   </Link>
 );

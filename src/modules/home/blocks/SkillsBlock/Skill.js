@@ -1,13 +1,13 @@
 import PropTypes from "prop-types";
 import { css } from "@linaria/core";
+import Image from "next/image";
+
 import { media } from "@/styles/breakpoints";
 
 const figureStyles = css`
   margin: 0;
   line-height: 0;
-`;
-
-const skillImageStyles = css`
+  position: relative;
   width: 3.438rem;
   height: 3.438rem;
   ${media.sm} {
@@ -19,7 +19,15 @@ const skillImageStyles = css`
 const Skill = ({ src, alt }) => {
   return (
     <figure className={figureStyles}>
-      <img alt={alt} title={alt} src={src} className={skillImageStyles} />
+      <Image
+        alt={alt}
+        title={alt}
+        src={src}
+        fill
+        unoptimized
+        sizes="100vw"
+        loading="lazy"
+      />
     </figure>
   );
 };
