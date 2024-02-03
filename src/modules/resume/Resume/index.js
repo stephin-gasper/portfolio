@@ -16,7 +16,7 @@ import {
   RESUME_PAGE_SIZE,
   RESUME_PATH,
 } from "./Resume.constants";
-import { resumeContainerStyles, resumeHeadingStyles } from "./Resume.style";
+import { resumeContainerStyles } from "./Resume.style";
 
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
   "pdfjs-dist/build/pdf.worker.min.js",
@@ -55,7 +55,6 @@ const ResumePage = () => {
 
   return (
     <>
-      <h1 className={resumeHeadingStyles}>Resume</h1>
       <div className={resumeContainerStyles} ref={setContainerRef}>
         <Document
           file={RESUME_PATH}
