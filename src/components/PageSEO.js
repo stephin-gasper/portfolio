@@ -7,7 +7,7 @@ const PageSEO = ({ title, description }) => {
   const { data } = useAppSettings();
   const router = useRouter(); // Get the router instance
 
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "";
+  const siteUrl = process.env.HOST_URL || "";
   const siteDescription = description || data.settings.site_desc;
   const siteName = data.settings.site_name;
 
