@@ -9,6 +9,7 @@ import dynamic from "next/dynamic";
 import { resolveBatch } from "@/utils/promises";
 
 import PageSEO from "@/components/PageSEO";
+import FeaturedImage from "@/components/FeaturedImage";
 
 /**
  * Critical: prevents "TypeError: url.replace is not a function" error
@@ -20,6 +21,8 @@ const Resume = dynamic(() => import("@/modules/resume/Resume/index"), {
 const ResumePage = () => (
   <>
     <PageSEO title="Resume" />
+    <FeaturedImage src="/space.webp" alt="Raccoon Space Gif" />
+
     <Resume />
   </>
 );
