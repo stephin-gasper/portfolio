@@ -16,7 +16,6 @@ const FeaturedImage = ({ src, alt }) => (
       src={src}
       placeholder="blur"
       blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
-      loading="lazy"
     />
   </div>
 );
