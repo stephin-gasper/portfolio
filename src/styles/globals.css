@@ -7,6 +7,7 @@
   --color-tertiary: #584966;
   --color-underline: #375a7f;
   --color-highlight: #78c2ad;
+  --color-link: #4aa48a;
   --font-primary: "Pacifico", cursive;
   --font-secondary: "Josefin Sans", sans-serif;
 }
@@ -179,7 +180,7 @@ p {
 
 a,
 a:active {
-  color: var(--color-highlight);
+  color: var(--color-link);
   text-decoration: none;
 }
 
