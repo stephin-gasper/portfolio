@@ -44,6 +44,7 @@ const nextConfig = {
       },
     ],
   },
+  optimizeFonts: false,
 };
 
 module.exports = withHeadlessConfig(nextConfig, headlessConfig);
