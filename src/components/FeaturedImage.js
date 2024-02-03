@@ -9,7 +9,7 @@ const gifWrapperStyles = css`
 
 const FeaturedImage = ({ src, alt }) => (
   <div className={gifWrapperStyles}>
-    <Image width="300" height="259" alt={alt} src={src} />
+    <Image width="300" height="259" alt={alt} src={src} priority />
   </div>
 );
 
