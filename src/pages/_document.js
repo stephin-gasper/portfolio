@@ -9,6 +9,41 @@ class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
+          {/* font */}
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link
+            rel="preconnect"
+            href="https://fonts.gstatic.com"
+            crossOrigin="true"
+          />
+          <link
+            rel="preload"
+            as="style"
+            href="https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Pacifico&display=swap"
+            crossOrigin="true"
+          />
+          {/* #workaround added to fix onload getting removed in displayed output */}
+          <style
+            // eslint-disable-next-line react/no-danger
+            dangerouslySetInnerHTML={{
+              __html: `
+              </style>
+                <link
+                  rel="stylesheet"
+                  href="https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Pacifico&display=swap"
+                  media="print"
+                  onload="this.media='all';"
+                />
+              <style>`,
+            }}
+          />
+          <noscript>
+            <link
+              href="https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Pacifico&display=swap"
+              rel="stylesheet"
+            />
+          </noscript>
+
           {/* favicon */}
           <link
             rel="apple-touch-icon"
@@ -31,41 +66,6 @@ class MyDocument extends Document {
           <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
           <meta name="msapplication-TileColor" content="#da532c" />
           <meta name="theme-color" content="#ffffff" />
-
-          {/* font */}
-          <link rel="preconnect" href="https://fonts.googleapis.com" />
-          <link
-            rel="preconnect"
-            href="https://fonts.gstatic.com"
-            crossOrigin="true"
-          />
-          <link
-            rel="preload"
-            as="style"
-            href="https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Pacifico&display=swap"
-          />
-          {/* workaround added to fix onload getting removed in displayed output */}
-          <style
-            // eslint-disable-next-line react/no-danger
-            dangerouslySetInnerHTML={{
-              __html: `
-              </style>
-                <link
-                  rel="stylesheet"
-                  href="https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Pacifico&display=swap"
-                  media="print"
-                  onload="this.media='all';"
-                />
-              <style>`,
-            }}
-          />
-          <noscript>
-            <link
-              href="https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Pacifico&display=swap"
-              rel="stylesheet"
-            />
-          </noscript>
-          <link rel="canonical" href="https://stephin-gasper.vercel.app/" />
         </Head>
         <body>
           <Main />

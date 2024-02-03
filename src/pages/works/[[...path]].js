@@ -6,6 +6,7 @@ import {
   handleError,
   useAppSettings,
 } from "@headstartwp/next";
+import Head from "next/head";
 
 import { worksParams } from "@/params";
 import { resolveBatch } from "@/utils/promises";
@@ -14,6 +15,7 @@ import FeaturedImage from "@/components/FeaturedImage";
 import { worksWrapperStyles } from "@/modules/works/Works.style";
 import Card from "@/modules/works/Card";
 import Loader from "@/components/Loader";
+import PageSEO from "@/components/PageSEO";
 
 /**
  * Archive page for work CPT
@@ -80,6 +82,11 @@ const WorksPage = () => {
 
   return (
     <>
+      <Head>
+        {/* Resource hints for assets */}
+        <link rel="preconnect" href="https://i.postimg.cc" />
+      </Head>
+      <PageSEO title="Work" description="Lastest works: Stephin Gasper" />
       <FeaturedImage src="/laptop.webp" alt="Raccoon Laptop Gif" />
 
       {renderWorks(contributions, "Contributions")}

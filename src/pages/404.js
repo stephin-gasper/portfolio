@@ -4,22 +4,18 @@ import {
   handleError,
   useAppSettings,
 } from "@headstartwp/next";
-import Head from "next/head";
+
 import { resolveBatch } from "@/utils/promises";
+import PageSEO from "@/components/PageSEO";
 
-const NotFoundPage = () => {
-  const { data } = useAppSettings();
-
-  return (
-    <>
-      <Head>
-        <title>{`Page Not Found - ${data.settings.site_name}`}</title>
-        <meta name="description" content={data.settings.site_desc} />
-      </Head>
-      <h1>404 - Page Not Found</h1>
-    </>
-  );
-};
+const NotFoundPage = () => (
+  <>
+    <PageSEO title="Page Not Found" />
+    <h1 style={{ textAlign: "center", paddingTop: 40 }}>
+      404 - Page Not Found
+    </h1>
+  </>
+);
 
 export async function getStaticProps(context) {
   try {

@@ -13,6 +13,7 @@ import { singleParams } from "@/params";
 
 import { PageContent } from "@/components/PageContent";
 import Loader from "@/components/Loader";
+import PageSEO from "@/components/PageSEO";
 
 const SinglePostsPage = () => {
   const { loading, error, data } = usePost(singleParams);
@@ -27,7 +28,12 @@ const SinglePostsPage = () => {
 
   const title = data.post.title.rendered;
 
-  return <PageContent params={title} />;
+  return (
+    <>
+      <PageSEO title={title} />
+      <PageContent params={title} />
+    </>
+  );
 };
 
 export default SinglePostsPage;

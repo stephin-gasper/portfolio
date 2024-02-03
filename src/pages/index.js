@@ -8,6 +8,7 @@ import {
 import { isBlock, isBlockByName } from "@headstartwp/core";
 import { BlocksRenderer } from "@headstartwp/core/react";
 import PropTypes from "prop-types";
+import Head from "next/head";
 
 import { resolveBatch } from "@/utils/promises";
 import { indexParams } from "@/params";
@@ -15,24 +16,28 @@ import { indexParams } from "@/params";
 import FeaturedImage from "@/components/FeaturedImage";
 import SkillsBlock from "@/modules/home/blocks/SkillsBlock";
 import TypingTextBlock from "@/modules/home/blocks/TypingTextBlock";
+import PageSEO from "@/components/PageSEO";
 
-const Homepage = ({ pageContent }) => {
-  return (
-    <>
-      <FeaturedImage src="/space.webp" alt="RaccoonSpaceGif" />
-      <BlocksRenderer html={pageContent}>
-        <SkillsBlock
-          test={(node) =>
-            isBlock(node, { tagName: "section", className: "skills-container" })
-          }
-        />
-        <TypingTextBlock
-          test={(node) => isBlockByName(node, "sg-block/typing-text-block")}
-        />
-      </BlocksRenderer>
-    </>
-  );
-};
+const Homepage = ({ pageContent }) => (
+  <>
+    <Head>
+      {/* Resource hints for assets */}
+      <link rel="preconnect" href="https://gistcdn.githack.com" />
+    </Head>
+    <PageSEO title="Homepage" />
+    <FeaturedImage src="/space.webp" alt="Raccoon Space Gif" />
+    <BlocksRenderer html={pageContent}>
+      <SkillsBlock
+        test={(node) =>
+          isBlock(node, { tagName: "section", className: "skills-container" })
+        }
+      />
+      <TypingTextBlock
+        test={(node) => isBlockByName(node, "sg-block/typing-text-block")}
+      />
+    </BlocksRenderer>
+  </>
+);
 
 Homepage.propTypes = {
   pageContent: PropTypes.string.isRequired,
