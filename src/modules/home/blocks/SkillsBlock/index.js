@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { defaultElement } from "@headstartwp/core/react";
-import { isElement } from "@headstartwp/core";
+import { isElement, isBlock } from "@headstartwp/core";
 import { css } from "@linaria/core";
 
 import { media } from "@/styles/breakpoints";
@@ -18,7 +18,7 @@ const skillsStyles = css`
   }
 `;
 
-const SkillsBlock = ({ domNode: node = defaultElement }) => {
+const SkillsBlock = ({ domNode: node }) => {
   const [skills, setSkills] = useState([]);
   useEffect(() => {
     const isImageTag = (elem) => elem.firstChild?.name === "img";
@@ -45,7 +45,16 @@ const SkillsBlock = ({ domNode: node = defaultElement }) => {
 };
 
 SkillsBlock.propTypes = {
-  domNode: PropTypes.shape({}),
+  domNode: PropTypes.shape({
+    children: PropTypes.array,
+  }),
+  test: PropTypes.func,
+};
+
+SkillsBlock.defaultProps = {
+  domNode: defaultElement,
+  test: (node) =>
+    isBlock(node, { tagName: "section", className: "skills-container" }),
 };
 
 export default SkillsBlock;

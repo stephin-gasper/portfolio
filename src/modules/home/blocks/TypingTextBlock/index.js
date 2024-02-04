@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import { cx } from "@linaria/core";
+import { isBlockByName } from "@headstartwp/core";
 import { defaultElement } from "@headstartwp/core/react";
 
 import useTypewriter from "./useTypeWriter";
@@ -11,7 +12,7 @@ import {
   typingTextCursorStyles,
 } from "./TypingTextBlock.style";
 
-const TypingTextBlock = ({ domNode: node = defaultElement }) => {
+const TypingTextBlock = ({ domNode: node }) => {
   const { prefix, strings, pauseTime, typeSpeed, deleteSpeed, loop, suffix } =
     JSON.parse(node.attribs["data-wp-block"]);
   const { typedText, isTypingPaused, continueLoop } = useTypewriter({
@@ -45,7 +46,16 @@ const TypingTextBlock = ({ domNode: node = defaultElement }) => {
 };
 
 TypingTextBlock.propTypes = {
-  domNode: PropTypes.shape({}),
+  domNode: PropTypes.shape({
+    attribs: PropTypes.shape({ "data-wp-block": PropTypes.shape({}) }),
+  }),
+  // eslint-disable-next-line react/no-unused-prop-types
+  test: PropTypes.func,
+};
+
+TypingTextBlock.defaultProps = {
+  domNode: defaultElement,
+  test: (node) => isBlockByName(node, "sg-block/typing-text-block"),
 };
 
 export default TypingTextBlock;
