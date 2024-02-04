@@ -1,5 +1,11 @@
+import { cx } from "@linaria/core";
 import PropTypes from "prop-types";
-import { footBtnStyles, footerLinksStyles } from "./FooterLinks.style";
+
+import {
+  footBtnStyles,
+  footBtnIconStyles,
+  footerLinksStyles,
+} from "./FooterLinks.style";
 
 const FooterLinks = ({ navigationLinks }) => (
   <ul className={footerLinksStyles}>
@@ -11,7 +17,7 @@ const FooterLinks = ({ navigationLinks }) => (
           rel="noreferrer"
           className={footBtnStyles}
         >
-          <span className={`${id}-icon`}>{label}</span>
+          <span className={cx(`${id}-icon`, footBtnIconStyles)}>{label}</span>
         </a>
       </li>
     ))}
