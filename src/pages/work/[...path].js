@@ -5,7 +5,7 @@ import {
   usePost,
   useAppSettings,
 } from "@headstartwp/next";
-import { HtmlDecoder, SafeHtml } from "@headstartwp/core/react";
+import { HtmlDecoder, BlocksRenderer } from "@headstartwp/core/react";
 import { useMemo } from "react";
 import Head from "next/head";
 import { stripTags } from "@headstartwp/core";
@@ -16,12 +16,13 @@ import { resolveBatch } from "@/utils/promises";
 import FeaturedImage from "@/components/FeaturedImage";
 import Details from "@/modules/work/Details";
 import Loader from "@/components/Loader";
+import ExternalLinkBlock from "@/blocks/ExternalLinkBlock";
+import ProjectImageSlider from "@/modules/work/ProjectImageSlider";
+import PageSEO from "@/components/PageSEO";
 
 import { PLATFORM_MAP } from "@/modules/work/Work.constants";
 import { TECH_STACK_MAP } from "@/modules/works/Works.constants";
-import ProjectImageSlider from "@/modules/work/ProjectImageSlider";
 import { detailsWrapperStyles } from "@/modules/work/Work.style";
-import PageSEO from "@/components/PageSEO";
 
 /**
  * Single page for work CPT
@@ -77,7 +78,9 @@ const WorkPage = () => {
       <h2>
         <HtmlDecoder html={title.rendered} />
       </h2>
-      <SafeHtml html={content.rendered} />
+      <BlocksRenderer html={content.rendered}>
+        <ExternalLinkBlock />
+      </BlocksRenderer>
       <section className={detailsWrapperStyles}>
         <Details name="Platform" value={platform} />
         <Details name="Stack" value={techStack} />
