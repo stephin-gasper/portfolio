@@ -5,7 +5,6 @@ import {
   addHookData,
   handleError,
 } from "@headstartwp/next";
-import { isBlock, isBlockByName } from "@headstartwp/core";
 import { BlocksRenderer } from "@headstartwp/core/react";
 import PropTypes from "prop-types";
 import Head from "next/head";
@@ -27,14 +26,8 @@ const Homepage = ({ pageContent }) => (
     <PageSEO title="Homepage" />
     <FeaturedImage src="/space.webp" alt="Raccoon Space Gif" />
     <BlocksRenderer html={pageContent}>
-      <SkillsBlock
-        test={(node) =>
-          isBlock(node, { tagName: "section", className: "skills-container" })
-        }
-      />
-      <TypingTextBlock
-        test={(node) => isBlockByName(node, "sg-block/typing-text-block")}
-      />
+      <SkillsBlock />
+      <TypingTextBlock />
     </BlocksRenderer>
   </>
 );
