@@ -16,6 +16,7 @@ import FeaturedImage from "@/components/FeaturedImage";
 import SkillsBlock from "@/modules/home/blocks/SkillsBlock";
 import TypingTextBlock from "@/modules/home/blocks/TypingTextBlock";
 import PageSEO from "@/components/PageSEO";
+import ExternalLinkBlock from "@/blocks/ExternalLinkBlock";
 
 const Homepage = ({ pageContent }) => (
   <>
@@ -28,6 +29,7 @@ const Homepage = ({ pageContent }) => (
     <BlocksRenderer html={pageContent}>
       <SkillsBlock />
       <TypingTextBlock />
+      <ExternalLinkBlock />
     </BlocksRenderer>
   </>
 );
