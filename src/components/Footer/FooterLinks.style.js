@@ -19,7 +19,7 @@ const getIcons = (isLightTheme = false) => {
       content: `url("/mail${pathPrefix}.svg")`,
     },
     "> .linkedin-icon": {
-      content: `url("/li-in${pathPrefix}.png")`,
+      content: `url("/linkedin${pathPrefix}.svg")`,
     },
   };
   return icons;
@@ -27,11 +27,9 @@ const getIcons = (isLightTheme = false) => {
 
 export const footBtnStyles = css`
   border-radius: 50%;
-  border: 2px solid var(--border-primary);
+  border: 0.125rem solid var(--border-primary);
   display: flex;
-  height: 20px;
-  padding: 10px;
-  width: 20px;
+  padding: 0.625rem;
 
   & {
     ${getIcons()};
@@ -45,4 +43,10 @@ export const footBtnStyles = css`
   .light & {
     ${getIcons(true)};
   }
+`;
+
+export const footBtnIconStyles = css`
+  display: inline-block;
+  height: 1.25rem;
+  width: 1.25rem;
 `;
