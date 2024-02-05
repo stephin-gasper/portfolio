@@ -1,10 +1,12 @@
-import PropTypes from "prop-types";
 import Link from "next/link";
 import { css } from "@linaria/core";
 
 import { media } from "@/styles/breakpoints";
 
+import LogoIcon from "./LogoIcon";
+
 const titleLinkStyles = css`
+  color: var(--text-primary);
   display: inline-flex;
   justify-self: center;
   grid-column: 1 / span 3;
@@ -14,19 +16,13 @@ const titleLinkStyles = css`
   }
 `;
 
-const Logo = ({ currentTheme }) => (
+const Logo = () => (
   <Link href="/" className={titleLinkStyles}>
-    <img
-      src={`/logo-${currentTheme}-theme.svg`}
-      alt="stephin portfolio home"
-      width={70}
-      height={45}
-    />
+    <LogoIcon />
+    <span className="visually-hidden">
+      Visit stephin gasper&apos;s homepage
+    </span>
   </Link>
 );
-
-Logo.propTypes = {
-  currentTheme: PropTypes.oneOf(["light", "dark"]).isRequired,
-};
 
 export default Logo;

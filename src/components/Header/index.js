@@ -46,8 +46,9 @@ const Header = () => {
 
   return (
     <header>
-      <nav className={navStyles}>
-        <Logo currentTheme={currentTheme} />
+      <span role="status" aria-live="polite" />
+      <nav className={navStyles} aria-label="Main">
+        <Logo />
         <Navigation navigationLinks={navigationLinks} />
         <ThemeToggle
           currentTheme={currentTheme}
