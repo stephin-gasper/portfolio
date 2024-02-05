@@ -9,44 +9,20 @@ export const footerLinksStyles = css`
   padding: 0;
 `;
 
-const getIcons = (isLightTheme = false) => {
-  const pathPrefix = !isLightTheme ? "-white" : "";
-  const icons = {
-    "> .github-icon": {
-      content: `url("/github-mark${pathPrefix}.svg")`,
-    },
-    "> .mail-icon": {
-      content: `url("/mail${pathPrefix}.svg")`,
-    },
-    "> .linkedin-icon": {
-      content: `url("/linkedin${pathPrefix}.svg")`,
-    },
-  };
-  return icons;
-};
-
 export const footBtnStyles = css`
+  color: var(--text-primary);
   border-radius: 50%;
-  border: 0.125rem solid var(--border-primary);
+  border: 0.125rem solid var(--text-primary);
   display: flex;
   padding: 0.625rem;
 
-  & {
-    ${getIcons()};
-  }
-
-  .light &:hover,
   &:hover {
+    color: var(--color-highlight);
     border-color: var(--color-highlight);
-  }
-
-  .light & {
-    ${getIcons(true)};
   }
 `;
 
 export const footBtnIconStyles = css`
-  display: inline-block;
   height: 1.25rem;
   width: 1.25rem;
 `;

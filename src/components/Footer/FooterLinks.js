@@ -1,4 +1,3 @@
-import { cx } from "@linaria/core";
 import PropTypes from "prop-types";
 
 import {
@@ -9,15 +8,16 @@ import {
 
 const FooterLinks = ({ navigationLinks }) => (
   <ul className={footerLinksStyles}>
-    {navigationLinks.map(({ id, href, label }) => (
+    {navigationLinks.map(({ id, href, label, icon: Icon }) => (
       <li key={`footer-li-${id}`}>
-        <a
-          href={href}
-          target="_blank"
-          rel="noreferrer"
-          className={footBtnStyles}
-        >
-          <span className={cx(`${id}-icon`, footBtnIconStyles)}>{label}</span>
+        <a href={href} className={footBtnStyles}>
+          <Icon
+            aria-hidden="true"
+            focusable="false"
+            role="img"
+            className={footBtnIconStyles}
+          />
+          <span className="visually-hidden">{label}</span>
         </a>
       </li>
     ))}
