@@ -43,6 +43,7 @@ const nextConfig = {
         pathname: "/stephin-gasper/**",
       },
     ],
+    formats: ["image/avif", "image/webp"],
   },
   optimizeFonts: false,
 };
