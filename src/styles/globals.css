@@ -8,8 +8,12 @@
   --color-underline: #375a7f;
   --color-highlight: #78c2ad;
   --color-link: #007664;
+
   --font-primary: "Pacifico", cursive;
   --font-secondary: "Josefin Sans", sans-serif;
+
+  --h2-underline-thickness: 0.119em;
+  --h2-underline-offset: 0.179em;
 }
 
 /** Themes */
@@ -170,8 +174,9 @@ h1 {
 }
 
 h2 {
-  text-decoration: underline var(--color-underline) 0.119em;
-  text-underline-offset: 0.179em;
+  text-decoration: underline var(--color-underline)
+    var(--h2-underline-thickness);
+  text-underline-offset: var(--h2-underline-offset);
   font-size: 2.1em;
   margin-bottom: 0;
 }
@@ -180,8 +185,22 @@ h3 {
   font-size: 1.5rem;
 }
 
+h2,
+h3 {
+  margin-bottom: 0;
+}
+
+h2 + p,
+h2 + ul,
+h2 + ol {
+  margin-top: calc(
+    1em + var(--h2-underline-thickness) + var(--h2-underline-offset)
+  );
+}
+
 p,
-li {
+ul,
+ol {
   font-size: 1.1em;
   hyphens: auto;
   line-height: 1.5;
