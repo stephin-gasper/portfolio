@@ -74,7 +74,11 @@ const WorkPage = () => {
         title={stripTags(title.rendered).trim()}
         description={stripTags(excerpt.rendered).trim()}
       />
-      <FeaturedImage src="/laptop.webp" alt="Raccoon Laptop Gif" />
+      <FeaturedImage
+        src="/laptop.webp"
+        alt="Raccoon Laptop Gif"
+        staticImageSrc="/laptop-static.avif"
+      />
       <h2>
         <HtmlDecoder html={title.rendered} />
       </h2>

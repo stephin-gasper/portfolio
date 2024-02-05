@@ -25,7 +25,11 @@ const Homepage = ({ pageContent }) => (
       <link rel="preconnect" href="https://gistcdn.githack.com" />
     </Head>
     <PageSEO title="Homepage" />
-    <FeaturedImage src="/space.webp" alt="Raccoon Space Gif" />
+    <FeaturedImage
+      src="/space.webp"
+      staticImageSrc="/space-static.avif"
+      alt="Raccoon Space Gif"
+    />
     <BlocksRenderer html={pageContent}>
       <SkillsBlock />
       <TypingTextBlock />

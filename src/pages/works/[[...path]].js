@@ -87,7 +87,11 @@ const WorksPage = () => {
         <link rel="preconnect" href="https://i.postimg.cc" />
       </Head>
       <PageSEO title="Work" description="Lastest works: Stephin Gasper" />
-      <FeaturedImage src="/laptop.webp" alt="Raccoon Laptop Gif" />
+      <FeaturedImage
+        src="/laptop.webp"
+        alt="Raccoon Laptop Gif"
+        staticImageSrc="/laptop-static.avif"
+      />
 
       {renderWorks(contributions, "Contributions")}
 

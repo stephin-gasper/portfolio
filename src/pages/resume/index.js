@@ -21,7 +21,11 @@ const Resume = dynamic(() => import("@/modules/resume/Resume/index"), {
 const ResumePage = () => (
   <>
     <PageSEO title="Resume" />
-    <FeaturedImage src="/space.webp" alt="Raccoon Space Gif" />
+    <FeaturedImage
+      src="/space.webp"
+      alt="Raccoon Space Gif"
+      staticImageSrc="/space-static.avif"
+    />
 
     <Resume />
   </>
