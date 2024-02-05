@@ -47,7 +47,7 @@ const TypingTextBlock = ({ domNode: node }) => {
 
 TypingTextBlock.propTypes = {
   domNode: PropTypes.shape({
-    attribs: PropTypes.shape({ "data-wp-block": PropTypes.shape({}) }),
+    attribs: PropTypes.shape({ "data-wp-block": PropTypes.string }),
   }),
   // eslint-disable-next-line react/no-unused-prop-types
   test: PropTypes.func,
