@@ -6,7 +6,14 @@ import { media } from "@/styles/breakpoints";
 import LogoIcon from "./LogoIcon";
 
 const titleLinkStyles = css`
-  color: var(--text-primary);
+  &,
+  &:active {
+    color: var(--text-primary);
+  }
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
   display: inline-flex;
   justify-self: center;
   grid-column: 1 / span 3;
