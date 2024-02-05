@@ -5,7 +5,7 @@ import { isAnchorTag } from "@headstartwp/core";
 
 const linkStyles = css`
   display: inline-block;
-  padding: 0 1px;
+  padding: 0 0.057em 0.114em;
   position: relative;
   text-indent: 0;
   line-height: 1;
@@ -16,7 +16,7 @@ const linkStyles = css`
     position: absolute;
     background-color: var(--link-underline);
     z-index: -1;
-    height: 5%;
+    height: 0.057em;
     left: 0;
     bottom: 0;
   }
