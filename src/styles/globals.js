@@ -2,43 +2,81 @@ import { css } from "@linaria/core";
 
 export const linkStyles = css`
   display: inline-block;
+  line-height: 1;
   padding: 0 0.057em 0.114em;
   position: relative;
   text-indent: 0;
-  line-height: 1;
 
   &::before,
   &::after {
     content: "";
-    position: absolute;
+    animation-fill-mode: both;
     background-color: var(--link-underline);
-    z-index: -1;
+    bottom: 0;
     height: 0.057em;
     left: 0;
-    bottom: 0;
+    position: absolute;
+    transform-origin: left center;
+    width: 100%;
+    z-index: -1;
+  }
+
+  @keyframes scale-in {
+    0% {
+      transform: scaleX(1);
+    }
+    100% {
+      transform: scaleX(0);
+    }
   }
 
   &::before {
-    width: 0%;
-    transition: width ease 0.4s;
+    animation-name: scale-in;
+    animation-duration: 0.2s;
+  }
+
+  @keyframes slide-in {
+    0% {
+      transform: translateX(100%) scaleX(0);
+    }
+    100% {
+      transform: translateX(0) scaleX(1);
+    }
   }
 
   &::after {
-    width: 100%;
-    transition: all ease 0.6s;
+    animation-name: slide-in;
+    animation-duration: 0.6s;
+  }
+
+  @keyframes scale-out {
+    0% {
+      transform: scaleX(0);
+    }
+    100% {
+      transform: scaleX(1);
+    }
+  }
+
+  @keyframes slide-out {
+    0% {
+      transform: translateX(0) scaleX(1);
+    }
+    100% {
+      transform: translateX(100%) scaleX(0);
+    }
   }
 
   &:hover,
   &:focus {
-    text-decoration: none;
     &::before {
-      width: 100%;
+      animation-name: scale-out;
+      animation-duration: 0.4s;
     }
 
     &::after {
-      left: 100%;
-      width: 0%;
-      transition: all ease 0.2s;
+      animation-name: slide-out;
+      animation-duration: 0.2s;
     }
   }
 `;
