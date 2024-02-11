@@ -23,10 +23,7 @@
   --text-link: var(--color-highlight);
 
   --background-primary: var(--color-primary);
-  --background-primary-invert: var(--color-secondary);
   --background-secondary: var(--color-primary-lighter);
-  --background-primary-invert: var(--color-secondary);
-  --background-secondary-invert: var(--color-secondary-lighter);
 
   --border-primary: var(--color-secondary);
   --border-secondary: var(--color-secondary-lighter);
@@ -47,8 +44,6 @@
 
   --background-primary: var(--color-secondary);
   --background-secondary: var(--color-secondary-lighter);
-  --background-primary-invert: var(--color-primary);
-  --background-secondary-invert: var(--color-primary-lighter);
 
   --border-primary: var(--color-primary);
   --border-secondary: var(--color-primary-lighter);
@@ -69,10 +64,7 @@
     --text-link: var(--color-link);
 
     --background-primary: var(--color-primary);
-    --background-primary-invert: var(--color-secondary);
     --background-secondary: var(--color-primary-lighter);
-    --background-primary-invert: var(--color-secondary);
-    --background-secondary-invert: var(--color-secondary-lighter);
 
     --border-primary: var(--color-secondary);
     --border-secondary: var(--color-secondary-lighter);
@@ -95,8 +87,6 @@
 
     --background-primary: var(--color-secondary);
     --background-secondary: var(--color-secondary-lighter);
-    --background-primary-invert: var(--color-primary);
-    --background-secondary-invert: var(--color-primary-lighter);
 
     --border-primary: var(--color-primary);
     --border-secondary: var(--color-primary-lighter);
@@ -145,15 +135,16 @@ body {
 }
 
 .skip-link:focus {
-  background-color: var(--background-primary-invert);
-  clip: auto;
+  background-color: var(--color-highlight);
   clip-path: none;
+  clip: auto;
   color: var(--text-primary-invert);
   display: block;
   font-size: 1em;
   height: auto;
   left: 5px;
   line-height: normal;
+  outline: none;
   padding: 0.938em 1.438em;
   text-decoration: none;
   top: 5px;
@@ -211,17 +202,9 @@ p {
 }
 
 /* Links */
-a,
-a:active {
+a {
   color: var(--text-link);
   text-decoration: none;
-}
-
-a.active,
-a:hover,
-a:focus {
-  text-decoration: underline var(--link-underline) 0.114em;
-  text-underline-offset: 0.341em;
 }
 
 /* Box Shadow */
