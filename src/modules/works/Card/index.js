@@ -33,7 +33,7 @@ const Card = ({ id, href, imgSrc, title, techStackHighlights, children }) => {
       {
         // eslint-disable-next-line jsx-a11y/no-static-element-interactions
         <div
-          className={cx(cardInnerStyles, "box-shadow")}
+          className={cardInnerStyles}
           onClick={onCardPress}
           onKeyDown={onCardPress}
         >
