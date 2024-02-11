@@ -1,12 +1,16 @@
 import { css } from "@linaria/core";
 
 export const cardWrapperStyles = css`
-  border-radius: 0.75rem;
   display: block;
   list-style: none;
+`;
+
+export const cardInnerStyles = css`
+  border-radius: 0.75rem;
   transition-duration: 0.15s;
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
   &:hover {
     cursor: pointer;
     transform: scale(1.05);
