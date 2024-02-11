@@ -18,7 +18,7 @@ const loader = css`
   border-radius: 50%;
   width: 100px;
   height: 100px;
-  color: var(--text-primary-invert);
+  color: var(--text-primary);
 
   &:before,
   &:after {
@@ -37,23 +37,6 @@ const loader = css`
     color: var(--color-highlight);
     transform: rotateY(70deg);
     animation-delay: 0.4s;
-  }
-  @keyframes rotate {
-    0% {
-      transform: translate(-50%, -50%) rotateZ(0deg);
-    }
-    100% {
-      transform: translate(-50%, -50%) rotateZ(360deg);
-    }
-  }
-
-  @keyframes rotateccw {
-    0% {
-      transform: translate(-50%, -50%) rotate(0deg);
-    }
-    100% {
-      transform: translate(-50%, -50%) rotate(-360deg);
-    }
   }
 
   @keyframes spin {
