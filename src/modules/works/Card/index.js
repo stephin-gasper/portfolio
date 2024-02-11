@@ -1,9 +1,9 @@
-import { Fragment } from "react";
+import { Fragment, useRef } from "react";
 import PropTypes from "prop-types";
 import { cx } from "@linaria/core";
 import Link from "next/link";
-import { HtmlDecoder } from "@headstartwp/core/react";
 import Image from "next/image";
+import { HtmlDecoder } from "@headstartwp/core/react";
 
 import {
   TECH_STACK_MAP,
@@ -12,17 +12,28 @@ import {
 import {
   cardDescriptionStyles,
   cardImageStyles,
-  cardInnerStyles,
   cardContentStyles,
   cardWrapperStyles,
-  cardtitleStyles,
+  cardTitleStyles,
   techStackHighlightStyles,
   teckStackHighlightItems,
+  cardTitleLinkStyles,
 } from "./Card.style";
 
-const Card = ({ id, href, imgSrc, title, techStackHighlights, children }) => (
-  <li className={cardWrapperStyles}>
-    <Link href={href} className={cx(cardInnerStyles, "box-shadow")}>
+const Card = ({ id, href, imgSrc, title, techStackHighlights, children }) => {
+  const linkRef = useRef();
+
+  const onCardPress = () => {
+    linkRef.current.click();
+  };
+
+  return (
+    // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
+    <li
+      className={cx(cardWrapperStyles, "box-shadow")}
+      onClick={onCardPress}
+      onKeyDown={onCardPress}
+    >
       <div className="dyamic-image-wrapper">
         <Image
           src={imgSrc}
@@ -35,8 +46,10 @@ const Card = ({ id, href, imgSrc, title, techStackHighlights, children }) => (
         />
       </div>
       <div className={cardContentStyles}>
-        <h3 className={cardtitleStyles}>
-          <HtmlDecoder html={title} />
+        <h3 className={cardTitleStyles}>
+          <Link href={href} className={cardTitleLinkStyles} ref={linkRef}>
+            <HtmlDecoder html={title} />
+          </Link>
         </h3>
         <p className={cardDescriptionStyles}>
           <HtmlDecoder html={children} />
@@ -56,9 +69,9 @@ const Card = ({ id, href, imgSrc, title, techStackHighlights, children }) => (
           </p>
         ) : null}
       </div>
-    </Link>
-  </li>
-);
+    </li>
+  );
+};
 
 Card.propTypes = {
   id: PropTypes.number.isRequired,
