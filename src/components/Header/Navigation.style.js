@@ -5,6 +5,8 @@ export const navLinkStyles = css`
   font-family: var(--font-secondary);
   font-size: 1.1rem;
   text-decoration: none;
+
+  &.active,
   &:hover,
   &:focus {
     text-decoration-color: var(--color-underline);
