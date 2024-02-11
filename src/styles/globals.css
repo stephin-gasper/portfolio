@@ -32,7 +32,6 @@
   --pagination-selected: rgba(255, 255, 255, 0.09);
 
   --shadow-color: #fdebf326;
-  --box-ring-color: var(--color-secondary);
 
   --link-underline: var(--color-link);
 }
@@ -52,7 +51,6 @@
   --pagination-selected: rgba(0, 0, 0, 0.09);
 
   --shadow-color: #1e1e2e26;
-  --ring-color: var(--color-primary);
 
   --link-underline: var(--color-underline);
 }
@@ -73,7 +71,6 @@
     --pagination-selected: rgba(255, 255, 255, 0.09);
 
     --shadow-color: #fdebf31a;
-    --box-ring-color: var(--color-secondary);
 
     --link-underline: var(--color-link);
   }
@@ -95,7 +92,6 @@
     --pagination-selected: rgba(0, 0, 0, 0.09);
 
     --shadow-color: #1e1e2e26;
-    --ring-color: var(--color-primary);
 
     --link-underline: var(--color-underline);
   }
@@ -205,16 +201,6 @@ p {
 a {
   color: var(--text-link);
   text-decoration: none;
-}
-
-/* Box Shadow */
-.box-shadow {
-  --ring-offset-shadow: 0 0 var(--ring-color);
-  --ring-shadow: 0 0 var(--ring-color);
-  --shadow: 0 10px 15px -3px var(--shadow-color),
-    0 4px 6px -4px var(--shadow-color);
-  box-shadow: var(--ring-offset-shadow, 0 0 #0000),
-    var(--ring-shadow, 0 0 #0000), var(--shadow);
 }
 
 /* Images */

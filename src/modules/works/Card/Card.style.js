@@ -7,6 +7,9 @@ export const cardWrapperStyles = css`
 
 export const cardInnerStyles = css`
   border-radius: 0.75rem;
+  box-shadow:
+    0 10px 15px -3px var(--shadow-color),
+    0 4px 6px -4px var(--shadow-color);
   transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover {
