@@ -28,17 +28,20 @@ const navigationLinks = [
     href: "/works",
     label: "Works",
     singleRoutePath: "/work/",
+    title: "stephin portfolio",
   },
   {
     id: "2",
     href: "/resume",
     label: "Resume",
+    title: "stephin resume",
   },
   {
     id: "3",
     href: "https://github.com/stephin-gasper/portfolio",
     label: "Github",
     isExternal: true,
+    title: "source code in github",
   },
 ];
 
@@ -47,8 +50,7 @@ const Header = () => {
 
   return (
     <header>
-      <span role="status" aria-live="polite" />
-      <nav className={navStyles} aria-label="Main">
+      <nav className={navStyles} role="navigation">
         <Logo />
         <Navigation navigationLinks={navigationLinks} />
         <ThemeToggle

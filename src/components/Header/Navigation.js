@@ -20,26 +20,24 @@ const Navigation = ({ navigationLinks }) => {
   return (
     <ul className={navListStyles}>
       {navigationLinks.map(
-        ({ id, isExternal, href, label, singleRoutePath }) => {
+        ({ id, isExternal, href, label, title, singleRoutePath }) => {
+          const isActive = checkMenuActive(href, singleRoutePath);
           return (
             <li key={`nav-item-${id}`} className={navListItemStyles}>
               {isExternal ? (
-                <a
-                  href={href}
-                  className={cx(
-                    navLinkStyles,
-                    checkMenuActive(href, singleRoutePath) && "active",
-                  )}
-                >
+                <a href={href} title={title} className={navLinkStyles}>
                   {label}
                 </a>
               ) : (
                 <Link
                   href={href}
-                  className={cx(
-                    navLinkStyles,
-                    checkMenuActive(href, singleRoutePath) && "active",
-                  )}
+                  title={title}
+                  className={cx(navLinkStyles, isActive && "active")}
+                  {...(isActive
+                    ? {
+                        "aria-current": "page",
+                      }
+                    : {})}
                 >
                   {label}
                 </Link>
