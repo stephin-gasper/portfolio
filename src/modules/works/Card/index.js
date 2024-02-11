@@ -18,6 +18,7 @@ import {
   techStackHighlightStyles,
   teckStackHighlightItems,
   cardTitleLinkStyles,
+  cardInnerStyles,
 } from "./Card.style";
 
 const Card = ({ id, href, imgSrc, title, techStackHighlights, children }) => {
@@ -28,47 +29,51 @@ const Card = ({ id, href, imgSrc, title, techStackHighlights, children }) => {
   };
 
   return (
-    // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
-    <li
-      className={cx(cardWrapperStyles, "box-shadow")}
-      onClick={onCardPress}
-      onKeyDown={onCardPress}
-    >
-      <div className="dyamic-image-wrapper">
-        <Image
-          src={imgSrc}
-          alt="project"
-          fill
-          sizes="100vw"
-          placeholder="blur"
-          blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
-          className={cx(cardImageStyles, "dyamic-image")}
-        />
-      </div>
-      <div className={cardContentStyles}>
-        <h3 className={cardTitleStyles}>
-          <Link href={href} className={cardTitleLinkStyles} ref={linkRef}>
-            <HtmlDecoder html={title} />
-          </Link>
-        </h3>
-        <p className={cardDescriptionStyles}>
-          <HtmlDecoder html={children} />
-        </p>
-        {techStackHighlights.length ? (
-          <p className={techStackHighlightStyles}>
-            {techStackHighlights.map((item, index) => (
-              <Fragment key={`${id}-${item}`}>
-                <span className={teckStackHighlightItems}>
-                  {TECH_STACK_MAP[item]}
-                </span>
-                {(index + 1) % techStackHighlights.length !== 0 ? (
-                  <span>&nbsp;.&nbsp;</span>
-                ) : null}
-              </Fragment>
-            ))}
-          </p>
-        ) : null}
-      </div>
+    <li className={cardWrapperStyles}>
+      {
+        // eslint-disable-next-line jsx-a11y/no-static-element-interactions
+        <div
+          className={cx(cardInnerStyles, "box-shadow")}
+          onClick={onCardPress}
+          onKeyDown={onCardPress}
+        >
+          <div className="dyamic-image-wrapper">
+            <Image
+              src={imgSrc}
+              alt="project"
+              fill
+              sizes="100vw"
+              placeholder="blur"
+              blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+              className={cx(cardImageStyles, "dyamic-image")}
+            />
+          </div>
+          <div className={cardContentStyles}>
+            <h3 className={cardTitleStyles}>
+              <Link href={href} className={cardTitleLinkStyles} ref={linkRef}>
+                <HtmlDecoder html={title} />
+              </Link>
+            </h3>
+            <p className={cardDescriptionStyles}>
+              <HtmlDecoder html={children} />
+            </p>
+            {techStackHighlights.length ? (
+              <p className={techStackHighlightStyles}>
+                {techStackHighlights.map((item, index) => (
+                  <Fragment key={`${id}-${item}`}>
+                    <span className={teckStackHighlightItems}>
+                      {TECH_STACK_MAP[item]}
+                    </span>
+                    {(index + 1) % techStackHighlights.length !== 0 ? (
+                      <span>&nbsp;.&nbsp;</span>
+                    ) : null}
+                  </Fragment>
+                ))}
+              </p>
+            ) : null}
+          </div>
+        </div>
+      }
     </li>
   );
 };
