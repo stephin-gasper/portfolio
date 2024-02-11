@@ -1,6 +1,8 @@
 import { css } from "@linaria/core";
 import PropTypes from "prop-types";
 
+import { linkStyles } from "@/styles/globals";
+
 const detailsWrapperStyles = css`
   text-indent: 0;
 `;
@@ -22,7 +24,7 @@ const Details = ({ name, value, isLink }) =>
     <p className={detailsWrapperStyles}>
       <small className={detailNameStyles}>{name}</small>
       {isLink ? (
-        <a href={value} target="_blank" rel="noreferrer">
+        <a href={value} className={linkStyles}>
           {value}
         </a>
       ) : (
