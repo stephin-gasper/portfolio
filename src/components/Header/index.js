@@ -27,6 +27,7 @@ const navigationLinks = [
     id: "1",
     href: "/works",
     label: "Works",
+    singleRoutePath: "/work/",
   },
   {
     id: "2",
