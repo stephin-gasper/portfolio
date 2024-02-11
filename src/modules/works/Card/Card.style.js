@@ -1,27 +1,15 @@
 import { css } from "@linaria/core";
 
 export const cardWrapperStyles = css`
+  border-radius: 0.75rem;
   display: block;
   list-style: none;
   transition-duration: 0.15s;
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   &:hover {
+    cursor: pointer;
     transform: scale(1.05);
-  }
-`;
-
-export const cardInnerStyles = css`
-  border-radius: 0.75rem;
-  color: var(--text-primary);
-  display: block;
-  text-align: left;
-  &:hover,
-  &:focus {
-    text-decoration: none;
-  }
-  &:active {
-    color: var(--text-primary);
   }
 `;
 
@@ -39,9 +27,13 @@ export const cardImageStyles = css`
   width: 100%;
 `;
 
-export const cardtitleStyles = css`
+export const cardTitleStyles = css`
   margin: 0;
   font-size: 1.25rem;
+`;
+
+export const cardTitleLinkStyles = css`
+  color: inherit;
 `;
 
 export const cardDescriptionStyles = css`
