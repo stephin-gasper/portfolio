@@ -3,8 +3,7 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 import { css } from "@linaria/core";
-import { getImageProps } from "next/image";
-import ImagePreload from "./ImagePreload";
+import Image from "next/image";
 
 const gifWrapperStyles = css`
   margin-top: 1.25rem;
@@ -12,54 +11,23 @@ const gifWrapperStyles = css`
 `;
 
 const FeaturedImage = ({ src, alt, staticImageSrc }) => {
-  const [imageLoaded, setImageLoaded] = useState(false);
-
-  const commonProps = {
-    width: 300,
-    height: 259,
-    alt,
-    priority: true,
-  };
-
-  const {
-    props: { src: staticImageSrcProp, ...staticImageAttributes },
-  } = getImageProps({
-    ...commonProps,
-    src: staticImageSrc,
-  });
-
-  const {
-    props: { fetchPriority, src: imageSrcProp, ...imageAttributes },
-  } = getImageProps({
-    ...commonProps,
-    src,
-  });
+  const [imageSrc, setImageSrc] = useState(staticImageSrc);
 
   const onImageLoad = () => {
-    setImageLoaded(true);
+    setImageSrc(src);
   };
 
   return (
-    <>
-      <ImagePreload src={staticImageSrcProp} {...staticImageAttributes} />
-      <ImagePreload
-        src={imageSrcProp}
-        fetchPriority={fetchPriority}
-        {...imageAttributes}
+    <div className={gifWrapperStyles}>
+      <Image
+        width="300"
+        height="259"
+        alt={alt}
+        src={imageSrc}
+        priority
+        onLoad={onImageLoad}
       />
-      <div className={gifWrapperStyles}>
-        {
-          // eslint-disable-next-line jsx-a11y/alt-text
-          <img
-            {...imageAttributes}
-            // eslint-disable-next-line react/no-unknown-property
-            fetchpriority={fetchPriority}
-            src={imageLoaded ? imageSrcProp : staticImageSrcProp}
-            onLoad={onImageLoad}
-          />
-        }
-      </div>
-    </>
+    </div>
   );
 };
 
