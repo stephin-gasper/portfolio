@@ -8,6 +8,7 @@ import dynamic from "next/dynamic";
 
 import { resolveBatch } from "@/utils/promises";
 
+import Loader from "@/components/Loader";
 import PageSEO from "@/components/PageSEO";
 import FeaturedImage from "@/components/FeaturedImage";
 
@@ -16,6 +17,7 @@ import FeaturedImage from "@/components/FeaturedImage";
  */
 const Resume = dynamic(() => import("@/modules/resume/Resume/index"), {
   ssr: false,
+  loading: Loader,
 });
 
 const ResumePage = () => (
