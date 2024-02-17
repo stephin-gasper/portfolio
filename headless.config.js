@@ -29,6 +29,13 @@ module.exports = {
       rewrite: "work-category",
       restParam: "work-category",
     },
+    {
+      slug: "tech-stack",
+      endpoint: "/wp-json/wp/v2/tech-stack",
+      postType: ["work"],
+      rewrite: "tech-stack",
+      restParam: "tech-stack",
+    },
   ],
 
   redirectStrategy: "404",

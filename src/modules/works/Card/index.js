@@ -5,10 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { HtmlDecoder } from "@headstartwp/core/react";
 
-import {
-  TECH_STACK_MAP,
-  WORK_PLACEHOLDER_IMAGE_PATH,
-} from "../Works.constants";
+import { WORK_PLACEHOLDER_IMAGE_PATH } from "../Works.constants";
 import {
   cardDescriptionStyles,
   cardImageStyles,
@@ -61,9 +58,7 @@ const Card = ({ id, href, imgSrc, title, techStackHighlights, children }) => {
               <p className={techStackHighlightStyles}>
                 {techStackHighlights.map((item, index) => (
                   <Fragment key={`${id}-${item}`}>
-                    <span className={teckStackHighlightItems}>
-                      {TECH_STACK_MAP[item]}
-                    </span>
+                    <span className={teckStackHighlightItems}>{item}</span>
                     {(index + 1) % techStackHighlights.length !== 0 ? (
                       <span>&nbsp;.&nbsp;</span>
                     ) : null}

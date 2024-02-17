@@ -21,7 +21,6 @@ import ProjectImageSlider from "@/modules/work/ProjectImageSlider";
 import PageSEO from "@/components/PageSEO";
 
 import { PLATFORM_MAP } from "@/modules/work/Work.constants";
-import { TECH_STACK_MAP } from "@/modules/works/Works.constants";
 import { detailsWrapperStyles } from "@/modules/work/Work.style";
 
 /**
@@ -42,8 +41,8 @@ const WorkPage = () => {
   );
 
   const techStack = useMemo(
-    () => meta_box.tech_stack.map((item) => TECH_STACK_MAP[item]).join(", "),
-    [meta_box.tech_stack],
+    () => meta_box.taxonomy_tech_stack.map((item) => item.name).join(", "),
+    [meta_box.taxonomy_tech_stack],
   );
 
   const imgSrcs = useMemo(() => {
