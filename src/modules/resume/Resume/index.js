@@ -3,6 +3,7 @@ import { Document, Page, pdfjs } from "react-pdf";
 
 import useResizeObserver from "@/hooks/useResizeObserver";
 
+import Loader from "@/components/Loader";
 import Pagination from "@/components/Pagination";
 
 import "react-pdf/dist/esm/Page/AnnotationLayer.css";
@@ -61,6 +62,7 @@ const ResumePage = () => {
           onLoadSuccess={onDocumentLoadSuccess}
           options={PDF_VIEWER_OPTIONS}
           className="resumeview"
+          loading={Loader}
         >
           <Page pageNumber={currentPageNumber} width={containerWidth} />
         </Document>
