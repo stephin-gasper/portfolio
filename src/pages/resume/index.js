@@ -28,7 +28,7 @@ const ResumePage = () => (
       alt="Raccoon Space Gif"
       staticImageSrc="/space-static.avif"
     />
-
+    <h1>Resume</h1>
     <Resume />
   </>
 );
