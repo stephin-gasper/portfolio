@@ -157,7 +157,7 @@ h2 {
 
 h1 {
   font-size: 2.6em;
-  margin: 0;
+  margin: 0.241em 0 0;
 }
 
 h2 {
@@ -169,7 +169,7 @@ h2 {
 }
 
 h3 {
-  font-size: 1.5rem;
+  font-size: 1.5em;
 }
 
 h2,
