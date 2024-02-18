@@ -78,9 +78,9 @@ const WorkPage = () => {
         alt="Raccoon Laptop Gif"
         staticImageSrc="/laptop-static.avif"
       />
-      <h2>
+      <h1>
         <HtmlDecoder html={title.rendered} />
-      </h2>
+      </h1>
       <BlocksRenderer html={content.rendered}>
         <ExternalLinkBlock />
       </BlocksRenderer>
