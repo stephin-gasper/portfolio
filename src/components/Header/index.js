@@ -49,7 +49,7 @@ const Header = () => {
   const [currentTheme, setCurrentTheme] = useState("light");
 
   return (
-    <header>
+    <header role="banner">
       <nav className={navStyles} role="navigation">
         <Logo />
         <Navigation navigationLinks={navigationLinks} />
