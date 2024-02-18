@@ -13,8 +13,15 @@ import {
 } from "./TypingTextBlock.style";
 
 const TypingTextBlock = ({ domNode: node }) => {
-  const { prefix, strings, pauseTime, typeSpeed, deleteSpeed, loop, suffix } =
-    JSON.parse(node.attribs["data-wp-block"]);
+  const {
+    prefix = "",
+    strings,
+    pauseTime,
+    typeSpeed,
+    deleteSpeed,
+    loop,
+    suffix = "",
+  } = JSON.parse(node.attribs["data-wp-block"]);
   const { typedText, isTypingPaused, continueLoop } = useTypewriter({
     strings,
     pauseTime,
@@ -23,24 +30,28 @@ const TypingTextBlock = ({ domNode: node }) => {
     loop,
   });
   return (
-    <p className={typingTextWrapperStyles}>
-      {prefix}
-      {strings.length ? (
-        <span className={typingTextStyles}>
-          {typedText}
-          <span
-            aria-hidden="true"
-            className={cx(
-              typingTextCursorStyles,
-              isTypingPaused && blinkStyles,
-              !continueLoop && "hide",
-            )}
-          >
-            |
+    <p
+      className={typingTextWrapperStyles}
+      aria-label={`${prefix}${strings?.join(", ")}${suffix}`}
+    >
+      <span aria-hidden="true">
+        {prefix}
+        {strings.length ? (
+          <span className={typingTextStyles}>
+            {typedText}
+            <span
+              className={cx(
+                typingTextCursorStyles,
+                isTypingPaused && blinkStyles,
+                !continueLoop && "hide",
+              )}
+            >
+              |
+            </span>
           </span>
-        </span>
-      ) : null}
-      {suffix}
+        ) : null}
+        {suffix}
+      </span>
     </p>
   );
 };
