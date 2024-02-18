@@ -7,21 +7,23 @@ import {
 } from "./FooterLinks.style";
 
 const FooterLinks = ({ navigationLinks }) => (
-  <ul className={footerLinksStyles}>
-    {navigationLinks.map(({ id, href, label, icon: Icon }) => (
-      <li key={`footer-li-${id}`}>
-        <a href={href} className={footBtnStyles}>
-          <Icon
-            aria-hidden="true"
-            focusable="false"
-            role="img"
-            className={footBtnIconStyles}
-          />
-          <span className="visually-hidden">{label}</span>
-        </a>
-      </li>
-    ))}
-  </ul>
+  <nav role="navigation">
+    <ul className={footerLinksStyles}>
+      {navigationLinks.map(({ id, href, label, icon: Icon }) => (
+        <li key={`footer-li-${id}`}>
+          <a href={href} className={footBtnStyles}>
+            <Icon
+              aria-hidden="true"
+              focusable="false"
+              role="img"
+              className={footBtnIconStyles}
+            />
+            <span className="visually-hidden">{label}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
 );
 
 FooterLinks.propTypes = {
