@@ -177,7 +177,7 @@ h3 {
   margin-bottom: 0;
 }
 
-h2:has(+ :is(p, ul, ol)) {
+h2 + :is(p, ul, ol) {
   margin-top: calc(
     1em + var(--h2-underline-thickness) + var(--h2-underline-offset)
   );

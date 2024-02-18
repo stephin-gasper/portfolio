@@ -12,7 +12,10 @@ import { worksParams } from "@/params";
 import { resolveBatch } from "@/utils/promises";
 
 import FeaturedImage from "@/components/FeaturedImage";
-import { worksWrapperStyles } from "@/modules/works/Works.style";
+import {
+  contributionsTitleStyles,
+  worksWrapperStyles,
+} from "@/modules/works/Works.style";
 import Card from "@/modules/works/Card";
 import Loader from "@/components/Loader";
 import PageSEO from "@/components/PageSEO";
@@ -46,10 +49,10 @@ const WorksPage = () => {
   );
 
   const renderWorks = useCallback(
-    (works, workCategoryTitle) =>
+    (works, workCategoryTitle, titleClassName) =>
       works ? (
         <>
-          <h2>{workCategoryTitle}</h2>
+          <h2 className={titleClassName}>{workCategoryTitle}</h2>
           <ul className={worksWrapperStyles}>
             {works.map((work) => (
               <Card
@@ -93,7 +96,11 @@ const WorksPage = () => {
         staticImageSrc="/laptop-static.avif"
       />
 
-      {renderWorks(contributions, "Contributions")}
+      <h1>
+        <span className="visually-hidden">My Work</span>
+      </h1>
+
+      {renderWorks(contributions, "Contributions", contributionsTitleStyles)}
 
       {renderWorks(projects, "Projects")}
     </>

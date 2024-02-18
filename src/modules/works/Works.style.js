@@ -7,3 +7,7 @@ export const worksWrapperStyles = css`
   padding: 2.625rem 0 1.375rem;
   margin: 0;
 `;
+
+export const contributionsTitleStyles = css`
+  margin-top: 0;
+`;
