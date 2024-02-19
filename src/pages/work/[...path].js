@@ -19,6 +19,7 @@ import Loader from "@/components/Loader";
 import ExternalLinkBlock from "@/blocks/ExternalLinkBlock";
 import ProjectImageSlider from "@/modules/work/ProjectImageSlider";
 import PageSEO from "@/components/PageSEO";
+import TechStack from "@/modules/work/TechStack";
 
 import { PLATFORM_MAP } from "@/modules/work/Work.constants";
 import { detailsWrapperStyles } from "@/modules/work/Work.style";
@@ -32,17 +33,21 @@ const WorkPage = () => {
   const {
     error,
     loading,
-    data: { post: { title, excerpt, content, meta_box, _embedded } = {} } = {},
+    data: {
+      post: {
+        title,
+        excerpt,
+        content,
+        meta_box,
+        _embedded,
+        terms: { tech_stack },
+      } = {},
+    } = {},
   } = usePost(workParams);
 
   const platform = useMemo(
     () => meta_box.platform.map((item) => PLATFORM_MAP[item]).join(", "),
     [meta_box.platform],
-  );
-
-  const techStack = useMemo(
-    () => meta_box.taxonomy_tech_stack.map((item) => item.name).join(", "),
-    [meta_box.taxonomy_tech_stack],
   );
 
   const imgSrcs = useMemo(() => {
@@ -67,6 +72,7 @@ const WorkPage = () => {
     <>
       <Head>
         {/* Resource hints for assets */}
+        <link rel="preconnect" href="https://gistcdn.githack.com" />
         <link rel="preconnect" href="https://i.postimg.cc" />
       </Head>
       <PageSEO
@@ -86,7 +92,9 @@ const WorkPage = () => {
       </BlocksRenderer>
       <section className={detailsWrapperStyles}>
         <Details name="Platform" value={platform} />
-        <Details name="Stack" value={techStack} />
+        <Details name="Stack">
+          <TechStack items={tech_stack} />
+        </Details>
         <Details name="Domain" value={meta_box.domain} />
         <Details name="Website" value={meta_box.website_url} isLink />
         <Details name="Github" value={meta_box.github_url} isLink />
