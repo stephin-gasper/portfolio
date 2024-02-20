@@ -3,7 +3,7 @@ import { removeSourceUrl } from "@headstartwp/core";
 import { useSettings } from "@headstartwp/core/react";
 import NextLink from "next/link";
 
-const Link = ({ href, rel, children, target }) => {
+const InternalLink = ({ href, rel, children, target }) => {
   const settings = useSettings();
   const link = removeSourceUrl({
     link: href,
@@ -17,7 +17,7 @@ const Link = ({ href, rel, children, target }) => {
   );
 };
 
-Link.propTypes = {
+InternalLink.propTypes = {
   href: PropTypes.string.isRequired,
   rel: PropTypes.string,
   children: PropTypes.oneOfType([
@@ -28,9 +28,9 @@ Link.propTypes = {
   target: PropTypes.string,
 };
 
-Link.defaultProps = {
+InternalLink.defaultProps = {
   rel: "",
   target: "",
 };
 
-export default Link;
+export default InternalLink;

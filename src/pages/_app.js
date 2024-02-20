@@ -5,7 +5,7 @@ import NProgress from "nprogress";
 import "../styles/globals.css";
 import "nprogress/nprogress.css";
 
-import Link from "@/components/Link";
+import InternalLink from "@/components/InternalLink";
 import Layout from "@/components/Layout";
 
 Router.events.on("routeChangeStart", () => NProgress.start());
@@ -39,7 +39,7 @@ const MyApp = ({ Component, pageProps }) => {
       }}
       settings={{
         // instruct the framework to use Next.js link component or your own version
-        linkComponent: Link,
+        linkComponent: InternalLink,
       }}
     >
       <Layout>
