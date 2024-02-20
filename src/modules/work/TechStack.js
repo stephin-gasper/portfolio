@@ -1,6 +1,8 @@
 import { memo } from "react";
 import PropTypes from "prop-types";
-import { css } from "@linaria/core";
+import { css, cx } from "@linaria/core";
+
+import { detailValueStyles } from "./Details/Details.style";
 
 const techStackStyles = css`
   display: inline-flex;
@@ -14,10 +16,14 @@ const techStackImageStyles = css`
 
 const TechStack = memo(function ({ items }) {
   return items.map((item) => (
-    <span key={item.id} className={techStackStyles}>
-      <img src={item.image_url} alt="" className={techStackImageStyles} />
+    <dd key={item.id} className={cx(detailValueStyles, techStackStyles)}>
+      <img
+        src={item.image_url}
+        alt={`${item.name} Logo`}
+        className={techStackImageStyles}
+      />
       {item.name}
-    </span>
+    </dd>
   ));
 });
 
