@@ -18,11 +18,21 @@ import {
   cardInnerStyles,
 } from "./Card.style";
 
-const Card = ({ id, href, imgSrc, title, techStackHighlights, children }) => {
+const Card = ({
+  id,
+  href,
+  imgSrc,
+  title,
+  techStackHighlights,
+  lazyLoadImage,
+  children,
+}) => {
   const linkRef = useRef();
 
-  const onCardPress = () => {
-    linkRef.current.click();
+  const onCardPress = (e) => {
+    if (linkRef.current !== e.target) {
+      linkRef.current.click();
+    }
   };
 
   return (
@@ -34,17 +44,6 @@ const Card = ({ id, href, imgSrc, title, techStackHighlights, children }) => {
           onClick={onCardPress}
           onKeyDown={onCardPress}
         >
-          <div className="dyamic-image-wrapper">
-            <Image
-              src={imgSrc}
-              alt="project"
-              fill
-              sizes="100vw"
-              placeholder="blur"
-              blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
-              className={cx(cardImageStyles, "dyamic-image")}
-            />
-          </div>
           <div className={cardContentStyles}>
             <h3 className={cardTitleStyles}>
               <Link href={href} className={cardTitleLinkStyles} ref={linkRef}>
@@ -60,12 +59,28 @@ const Card = ({ id, href, imgSrc, title, techStackHighlights, children }) => {
                   <Fragment key={`${id}-${item}`}>
                     <span className={teckStackHighlightItems}>{item}</span>
                     {(index + 1) % techStackHighlights.length !== 0 ? (
-                      <span>&nbsp;.&nbsp;</span>
+                      <span>&nbsp;•&nbsp;</span>
                     ) : null}
                   </Fragment>
                 ))}
               </p>
             ) : null}
+          </div>
+          <div className="dyamic-image-wrapper">
+            <Image
+              src={imgSrc}
+              alt="project featured image"
+              fill
+              sizes="100vw"
+              className={cx(cardImageStyles, "dyamic-image")}
+              {...(lazyLoadImage
+                ? {
+                    placeholder: "blur",
+                    blurDataURL:
+                      "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==",
+                  }
+                : { priority: true })}
+            />
           </div>
         </div>
       }
@@ -84,11 +99,13 @@ Card.propTypes = {
     PropTypes.elementType,
   ]).isRequired,
   techStackHighlights: PropTypes.arrayOf(PropTypes.string),
+  lazyLoadImage: PropTypes.bool,
 };
 
 Card.defaultProps = {
   imgSrc: WORK_PLACEHOLDER_IMAGE_PATH,
   techStackHighlights: [],
+  lazyLoadImage: true,
 };
 
 export default Card;

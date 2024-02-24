@@ -49,12 +49,12 @@ const WorksPage = () => {
   );
 
   const renderWorks = useCallback(
-    (works, workCategoryTitle, titleClassName) =>
+    ({ works, title, titleClassName, disableFirstImageLazyLoad }) =>
       works ? (
         <>
-          <h2 className={titleClassName}>{workCategoryTitle}</h2>
+          <h2 className={titleClassName}>{title}</h2>
           <ul className={worksWrapperStyles}>
-            {works.map((work) => (
+            {works.map((work, index) => (
               <Card
                 key={work.id}
                 id={work.id}
@@ -65,6 +65,7 @@ const WorksPage = () => {
                 }
                 title={work.title.rendered}
                 techStackHighlights={work.meta_box.tech_stack_highlighted}
+                lazyLoadImage={!(disableFirstImageLazyLoad && index === 0)}
               >
                 {work.excerpt.rendered}
               </Card>
@@ -100,9 +101,14 @@ const WorksPage = () => {
         <span className="visually-hidden">My Work</span>
       </h1>
 
-      {renderWorks(contributions, "Contributions", contributionsTitleStyles)}
+      {renderWorks({
+        works: contributions,
+        title: "Contributions",
+        titleClassName: contributionsTitleStyles,
+        disableFirstImageLazyLoad: true,
+      })}
 
-      {renderWorks(projects, "Projects")}
+      {renderWorks({ works: projects, title: "Projects" })}
     </>
   );
 };

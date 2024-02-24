@@ -10,15 +10,19 @@ export const cardInnerStyles = css`
   box-shadow:
     0 10px 15px -3px var(--shadow-color),
     0 4px 6px -4px var(--shadow-color);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
   transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1);
-
-  &:hover {
-    cursor: pointer;
+  &:hover,
+  &:focus-within {
     transform: scale(1.05);
   }
 `;
 
 export const cardContentStyles = css`
+  flex-grow: 1;
+  order: 1;
   padding: 1.25rem 0.938rem;
 `;
 
@@ -27,6 +31,7 @@ export const cardImageStyles = css`
   border-top-right-radius: 0.75rem;
   display: block;
   max-height: 21.875rem;
+  min-height: 75%; // 4:3 Aspect Ratio
   object-fit: cover;
   object-position: top;
   width: 100%;
@@ -39,6 +44,9 @@ export const cardTitleStyles = css`
 
 export const cardTitleLinkStyles = css`
   color: inherit;
+  &:focus {
+    outline: none;
+  }
 `;
 
 export const cardDescriptionStyles = css`
