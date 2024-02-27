@@ -3,7 +3,7 @@ import { css } from "@linaria/core";
 export const paginationContainerStyles = css`
   display: flex;
   flex-wrap: wrap;
-  gap: 0.625em;
+  gap: 0.341em;
   justify-content: center;
   list-style-type: none;
   margin: 0;
