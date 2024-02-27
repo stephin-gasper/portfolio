@@ -2,11 +2,12 @@ import { css } from "@linaria/core";
 
 export const paginationContainerStyles = css`
   display: flex;
+  flex-wrap: wrap;
+  gap: 0.625em;
   justify-content: center;
   list-style-type: none;
   margin: 0;
   padding: 0;
-  gap: 0.625em;
 `;
 
 export const paginationItemStyles = css`
