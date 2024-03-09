@@ -4,8 +4,23 @@
 
 ## Overview
 
-* This project is created as showcase of my portfolio with frontend using React/Next.js version of [Milky Way portfolio template](https://github.com/ttomczak3/Milky-Way) (with many changes suiting my needs and major code improvements), and backend powered by WordPress.
+* This project is created as showcase of my portfolio with frontend using React/Next.js version of [Milky Way portfolio template](https://github.com/ttomczak3/Milky-Way) (with many changes suiting my needs and major code improvements), and backend powered by WordPress. Check out the [Live Demo](https://stephin-gasper.vercel.app/).
 * The integration of [Next.js](https://nextjs.org/) as frontend and [Wordpress](https://wordpress.org/) for backend is achieved using [HeadstartWP](https://github.com/10up/headstartwp), which provides Headless CMS for WordPress.
+* This project uses two sub-projects created to meet the requirements of this project:
+    * [SG Typing Text Block](https://github.com/stephin-gasper/sg-typing-text-block): A [Gutenberg block](https://wordpress.org/blocks/) used for showing typewriter effect to text( or multiple texts, each one replacing another )
+    * [Works Custom Post Type Plugin](https://github.com/stephin-gasper/works-cpt): For registering [custom post type](https://developer.wordpress.org/plugins/post-types/registering-custom-post-types/) called works for showing my portfolios. It will also register custom taxonomies of `Work Category` & `Tech Stack`.
+
+## Tech Stack
+
+* [Next.js](https://nextjs.org/)
+* [React](https://github.com/facebook/react)
+* [Linaria](https://github.com/callstack/linaria): For adding support of CSS in JS, with zero runtime.
+* [HeadstartWP](https://github.com/10up/headstartwp): For providing headless CMS for WordPress
+* [ESlint](https://github.com/eslint/eslint): Using **@10up/eslint-config** as style guide
+* [Husky](https://typicode.github.io/husky/): For supporting client side Git Hooks
+* [Lint-staged](https://github.com/lint-staged/lint-staged): For linting staged files during commit
+* [Commitlint](https://commitlint.js.org): For enforcing [conventional commit](https://www.conventionalcommits.org) messages during commit
+* [Pnpm](https://pnpm.io/): For package management
 
 ## Getting Started
 
@@ -52,7 +67,7 @@ Explore the creation of API routes: Although no `hello.js` file exists, you can 
 * For setting local wordpress enviroment which is docker based, you can use [wp-local-docker-v2](https://github.com/10up/wp-local-docker-v2). This can be used as an alternative for setting up multiple local wordpress instances if you don't have one already.
 * For showing skills section in homepage using WordPress according to how it is shown in demo website, follow below steps:
     1. Add Group block from your Gutenberg editor
-    2. Inside advanced section in settings sidebar, select `section` from **'HTML Element'** and add `skills-container` to **'ADDITIONAL CSS CLASS(ES)'** field
+    2. Inside advanced section in settings sidebar, select `section` from **'HTML Element'** and add `skills-container` to **'ADDITIONAL CSS CLASSES'** field
     3. Add individual Image block inside parent Group block.
 
 ## Deployment
@@ -69,24 +84,7 @@ Explore the creation of API routes: Although no `hello.js` file exists, you can 
         HOST_URL=<your_live_nextjs_url>
     ```
 
-## Tech Stack
-
-* [Next.js](https://nextjs.org/)
-* [React](https://github.com/facebook/react)
-* [Linaria](https://github.com/callstack/linaria): For adding support of CSS in JS, with zero runtime.
-* [HeadstartWP](https://github.com/10up/headstartwp): For providing headless CMS for WordPress
-* [ESlint](https://github.com/eslint/eslint): Using **@10up/eslint-config** as style guide
-* [Husky](https://typicode.github.io/husky/): For supporting client side Git Hooks
-* [Lint-staged](https://github.com/lint-staged/lint-staged): For linting staged files during commit
-* [Commitlint](https://commitlint.js.org): For enforcing [conventional commit](https://www.conventionalcommits.org) messages during commit
-* [Pnpm](https://pnpm.io/): For package management
-
-## Explore the Project
-
-* [GitHub Repository](https://github.com/stephin-gasper/portfolio/)
-* [Live Demo](https://stephin-gasper.vercel.app/)
-
-## Contributing
+## Contribution
 
 While this repository is not a template, feel free to use it as a starting point for your own portfolio site. You can modify and customize the code to suit your needs. If you'd like to contribute to the project or report any issues, feel free to submit a pull request or open an issue in the GitHub repository.
 
