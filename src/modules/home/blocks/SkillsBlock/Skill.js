@@ -16,18 +16,20 @@ const figureStyles = css`
   }
 `;
 
-const Skill = ({ src, alt }) => {
+const Skill = ({ src, alt, href }) => {
   return (
     <figure className={figureStyles}>
-      <Image
-        alt={alt}
-        title={alt}
-        src={src}
-        fill
-        unoptimized
-        sizes="100vw"
-        loading="lazy"
-      />
+      <a href={href}>
+        <Image
+          alt={alt}
+          title={alt}
+          src={src}
+          fill
+          unoptimized
+          sizes="100vw"
+          loading="lazy"
+        />
+      </a>
     </figure>
   );
 };
@@ -35,6 +37,7 @@ const Skill = ({ src, alt }) => {
 Skill.propTypes = {
   src: PropTypes.string.isRequired,
   alt: PropTypes.string.isRequired,
+  href: PropTypes.string.isRequired,
 };
 
 export default Skill;

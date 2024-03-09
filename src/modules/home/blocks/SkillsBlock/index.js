@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { defaultElement } from "@headstartwp/core/react";
-import { isElement, isBlock } from "@headstartwp/core";
+import { isElement, isBlock, isAnchorTag, isImageTag } from "@headstartwp/core";
 import { css } from "@linaria/core";
 
 import { media } from "@/styles/breakpoints";
@@ -21,13 +21,17 @@ const skillsStyles = css`
 const SkillsBlock = ({ domNode: node }) => {
   const [skills, setSkills] = useState([]);
   useEffect(() => {
-    const isImageTag = (elem) => elem.firstChild?.name === "img";
-
     const getSkills = () =>
       node.children.reduce((accumulator, currentValue) => {
-        if (isElement(currentValue) && isImageTag(currentValue)) {
-          const { src, alt } = currentValue.firstChild.attribs;
-          return [...accumulator, { src, alt }];
+        if (
+          isElement(currentValue) &&
+          isAnchorTag(currentValue?.firstChild) &&
+          currentValue.firstChild.childNodes.length &&
+          isImageTag(currentValue.firstChild.childNodes[0])
+        ) {
+          const { href } = currentValue.firstChild.attribs;
+          const { src, alt } = currentValue.firstChild.childNodes[0].attribs;
+          return [...accumulator, { src, alt, href }];
         }
         return accumulator;
       }, []);
