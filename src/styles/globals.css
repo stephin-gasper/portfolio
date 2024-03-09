@@ -1,9 +1,9 @@
 /* Variables */
 :root {
   --color-primary: #1e1e2e;
-  --color-primary-lighter: #1e1e2eb3;
+  --color-primary-translucent: #1e1e2eb3;
   --color-secondary: #fdebf3;
-  --color-secondary-lighter: #fdebf366;
+  --color-secondary-translucent: #fdebf366;
   --color-tertiary: #584966;
   --color-underline: #375a7f;
   --color-highlight: #78c2ad;
@@ -18,82 +18,94 @@
 
 /** Themes */
 .dark {
-  --text-primary: var(--color-secondary);
-  --text-primary-invert: var(--color-primary);
-  --text-link: var(--color-highlight);
-
   --background-primary: var(--color-primary);
-  --background-secondary: var(--color-primary-lighter);
+  --background-secondary: var(--color-primary-translucent);
 
   --border-primary: var(--color-secondary);
-  --border-secondary: var(--color-secondary-lighter);
+  --border-secondary: var(--color-secondary-translucent);
+
+  --card-background: #323743;
+  --card-text: #fff;
+
+  --link-underline: var(--color-link);
 
   --pagination-hover: rgba(255, 255, 255, 0.04);
   --pagination-selected: rgba(255, 255, 255, 0.09);
 
-  --shadow-color: #fdebf326;
+  --shadow-color: #fdebf30d;
 
-  --link-underline: var(--color-link);
+  --text-link: var(--color-highlight);
+  --text-primary-invert: var(--color-primary);
+  --text-primary: var(--color-secondary);
 }
 
 .light {
-  --text-primary: var(--color-primary);
-  --text-primary-invert: var(--color-secondary);
-  --text-link: var(--color-link);
-
   --background-primary: var(--color-secondary);
-  --background-secondary: var(--color-secondary-lighter);
+  --background-secondary: var(--color-secondary-translucent);
 
   --border-primary: var(--color-primary);
-  --border-secondary: var(--color-primary-lighter);
+  --border-secondary: var(--color-primary-translucent);
+
+  --card-background: #fef7fa;
+  --card-text: #171a1f;
+
+  --link-underline: var(--color-underline);
 
   --pagination-hover: rgba(0, 0, 0, 0.06);
   --pagination-selected: rgba(0, 0, 0, 0.09);
 
-  --shadow-color: #1e1e2e26;
+  --shadow-color: #1e1e2e0d;
 
-  --link-underline: var(--color-underline);
+  --text-link: var(--color-link);
+  --text-primary-invert: var(--color-secondary);
+  --text-primary: var(--color-primary);
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not(.light, .dark) {
-    --text-primary: var(--color-secondary);
-    --text-primary-invert: var(--color-primary);
-    --text-link: var(--color-link);
-
     --background-primary: var(--color-primary);
-    --background-secondary: var(--color-primary-lighter);
+    --background-secondary: var(--color-primary-translucent);
 
     --border-primary: var(--color-secondary);
-    --border-secondary: var(--color-secondary-lighter);
+    --border-secondary: var(--color-secondary-translucent);
+
+    --card-background: #323743;
+    --card-text: #fff;
+
+    --link-underline: var(--color-link);
 
     --pagination-hover: rgba(255, 255, 255, 0.04);
     --pagination-selected: rgba(255, 255, 255, 0.09);
 
-    --shadow-color: #fdebf31a;
+    --shadow-color: #fdebf30d;
 
-    --link-underline: var(--color-link);
+    --text-link: var(--color-link);
+    --text-primary-invert: var(--color-primary);
+    --text-primary: var(--color-secondary);
   }
 }
 
 @media (prefers-color-scheme: light) {
   :root:not(.light, .dark) {
-    --text-primary: var(--color-primary);
-    --text-primary-invert: var(--color-secondary);
-    --text-link: var(--color-highlight);
-
     --background-primary: var(--color-secondary);
-    --background-secondary: var(--color-secondary-lighter);
+    --background-secondary: var(--color-secondary-translucent);
 
     --border-primary: var(--color-primary);
-    --border-secondary: var(--color-primary-lighter);
+    --border-secondary: var(--color-primary-translucent);
+
+    --card-background: #fef7fa;
+    --card-text: #171a1f;
+
+    --link-underline: var(--color-underline);
 
     --pagination-hover: rgba(0, 0, 0, 0.06);
     --pagination-selected: rgba(0, 0, 0, 0.09);
 
-    --shadow-color: #1e1e2e26;
+    --shadow-color: #1e1e2e0d;
 
-    --link-underline: var(--color-underline);
+    --text-link: var(--color-highlight);
+    --text-primary-invert: var(--color-secondary);
+    --text-primary: var(--color-primary);
   }
 }
 

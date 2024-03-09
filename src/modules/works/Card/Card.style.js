@@ -10,6 +10,8 @@ export const cardInnerStyles = css`
   box-shadow:
     0 10px 15px -3px var(--shadow-color),
     0 4px 6px -4px var(--shadow-color);
+  background-color: var(--card-background);
+  color: var(--card-text);
   cursor: pointer;
   display: flex;
   flex-direction: column;
