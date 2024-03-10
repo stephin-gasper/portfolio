@@ -6,7 +6,7 @@ export const singleParams = { postType: ["page", "post"] };
 /**
  * @type {import('@headstartwp/core').PostParams}
  */
-export const indexParams = { postType: ["page"] };
+export const pageParams = { postType: ["page"] };
 
 /**
  * @type {import('@headstartwp/core').PostParams}
