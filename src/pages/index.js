@@ -5,18 +5,19 @@ import {
   addHookData,
   handleError,
 } from "@headstartwp/next";
-import { BlocksRenderer } from "@headstartwp/core/react";
+import { BlocksRenderer, ButtonBlock } from "@headstartwp/core/react";
 import PropTypes from "prop-types";
 import Head from "next/head";
 
 import { resolveBatch } from "@/utils/promises";
-import { indexParams } from "@/params";
+import { pageParams } from "@/params";
 
 import FeaturedImage from "@/components/FeaturedImage";
 import SkillsBlock from "@/modules/home/blocks/SkillsBlock";
 import TypingTextBlock from "@/modules/home/blocks/TypingTextBlock";
 import PageSEO from "@/components/PageSEO";
 import ExternalLinkBlock from "@/blocks/ExternalLinkBlock";
+import KnowMoreButton from "@/modules/home/KnowMoreButton";
 
 const Homepage = ({ pageContent }) => (
   <>
@@ -33,6 +34,7 @@ const Homepage = ({ pageContent }) => (
     <BlocksRenderer html={pageContent}>
       <SkillsBlock />
       <TypingTextBlock />
+      <ButtonBlock component={KnowMoreButton} />
       <ExternalLinkBlock />
     </BlocksRenderer>
   </>
@@ -64,7 +66,7 @@ export async function getStaticProps(context) {
       {
         func: fetchHookData(usePost.fetcher(), context, {
           params: {
-            ...indexParams,
+            ...pageParams,
             slug,
           },
         }),
