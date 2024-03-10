@@ -5,8 +5,7 @@ import PropTypes from "prop-types";
 import { css } from "@linaria/core";
 import Image from "next/image";
 
-const gifWrapperStyles = css`
-  margin-top: 1.25rem;
+const imageWrapperStyles = css`
   text-align: center;
 `;
 
@@ -18,7 +17,7 @@ const FeaturedImage = ({ src, alt, staticImageSrc }) => {
   };
 
   return (
-    <div className={gifWrapperStyles}>
+    <div className={imageWrapperStyles}>
       <Image
         width="300"
         height="259"
