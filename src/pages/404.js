@@ -11,7 +11,7 @@ import PageSEO from "@/components/PageSEO";
 const NotFoundPage = () => (
   <>
     <PageSEO title="Page Not Found" />
-    <h1 style={{ textAlign: "center", paddingTop: 40 }}>
+    <h1 style={{ textAlign: "center", paddingTop: "1.25rem" }}>
       404 - Page Not Found
     </h1>
   </>
