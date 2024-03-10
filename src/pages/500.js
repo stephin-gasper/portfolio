@@ -13,7 +13,7 @@ const ServerErrorPage = () => (
   <>
     <PageSEO title="Error" />
 
-    <h1 style={{ textAlign: "center", paddingTop: 40 }}>
+    <h1 style={{ textAlign: "center", paddingTop: "1.25rem" }}>
       500 - Internal Server Error
     </h1>
   </>
