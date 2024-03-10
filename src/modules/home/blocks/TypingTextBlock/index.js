@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { cx } from "@linaria/core";
 import { isBlockByName } from "@headstartwp/core";
-import { defaultElement } from "@headstartwp/core/react";
+import { defaultElement, useBlock } from "@headstartwp/core/react";
 
 import useTypewriter from "./useTypeWriter";
 
@@ -14,14 +14,17 @@ import {
 
 const TypingTextBlock = ({ domNode: node }) => {
   const {
-    prefix = "",
-    strings,
-    pauseTime,
-    typeSpeed,
-    deleteSpeed,
-    loop,
-    suffix = "",
-  } = JSON.parse(node.attribs["data-wp-block"]);
+    attributes: {
+      prefix = "",
+      strings,
+      pauseTime,
+      typeSpeed,
+      deleteSpeed,
+      loop,
+      suffix = "",
+    },
+  } = useBlock(node);
+
   const { typedText, isTypingPaused, continueLoop } = useTypewriter({
     strings,
     pauseTime,
