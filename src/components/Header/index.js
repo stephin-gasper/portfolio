@@ -14,7 +14,7 @@ const navStyles = css`
   grid-template-columns: repeat(3, min-content);
   grid-template-rows: auto auto;
   justify-content: center;
-  margin-top: 1.25rem;
+  margin: 1.25rem 0;
   ${media.sm} {
     grid-template-columns: 1fr repeat(2, min-content);
     grid-template-rows: 1fr;
