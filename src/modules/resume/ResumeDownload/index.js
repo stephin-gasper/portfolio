@@ -1,24 +1,25 @@
 import PropTypes from "prop-types";
+import { css } from "@linaria/core";
+
+import LinkButton from "@/components/LinkButton";
 
 import DownloadIcon from "./DownloadIcon";
 
-import {
-  resumeDownloadContainerStyles,
-  resumeDownloadStyles,
-} from "./ResumeDownload.style";
+export const containerStyles = css`
+  margin-top: 1.875rem;
+  text-align: center;
+`;
 
 const ResumeDownload = ({ resumePath }) => (
-  <div className={resumeDownloadContainerStyles}>
-    <a
-      href={resumePath}
+  <div className={containerStyles}>
+    <LinkButton
+      url={resumePath}
       target="_blank"
       rel="noreferrer"
       download="Stephin Resume"
-      className={resumeDownloadStyles}
-    >
-      <DownloadIcon />
-      &nbsp; <b>Download Resume</b>
-    </a>
+      text="Download Resume"
+      icon={DownloadIcon}
+    />
   </div>
 );
 
