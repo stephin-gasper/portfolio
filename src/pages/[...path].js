@@ -15,7 +15,7 @@ import { PageContent } from "@/components/PageContent";
 import Loader from "@/components/Loader";
 import PageSEO from "@/components/PageSEO";
 
-const SinglePostsPage = () => {
+const SinglePostsAndPage = () => {
   const { loading, error, data } = usePost(singleParams);
 
   if (loading) {
@@ -31,12 +31,12 @@ const SinglePostsPage = () => {
   return (
     <>
       <PageSEO title={title} />
-      <PageContent params={title} />
+      <PageContent params={singleParams} />
     </>
   );
 };
 
-export default SinglePostsPage;
+export default SinglePostsAndPage;
 
 /**
  * This is an example of pre-rendering a set of pages at build times.
