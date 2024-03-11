@@ -5,7 +5,11 @@ import {
   addHookData,
   handleError,
 } from "@headstartwp/next";
-import { BlocksRenderer, ButtonBlock } from "@headstartwp/core/react";
+import {
+  BlocksRenderer,
+  ButtonBlock,
+  ButtonsBlock,
+} from "@headstartwp/core/react";
 import PropTypes from "prop-types";
 import Head from "next/head";
 
@@ -17,8 +21,9 @@ import SkillsBlock from "@/modules/home/blocks/SkillsBlock";
 import TypingTextBlock from "@/modules/home/blocks/TypingTextBlock";
 import PageSEO from "@/components/PageSEO";
 import ExternalLinkBlock from "@/blocks/ExternalLinkBlock";
-import KnowMoreButton from "@/modules/home/KnowMoreButton";
 import { RACCOON_IN_SPACE } from "@/constants/featureImage";
+import HomeButton from "@/modules/home/HomeButton";
+import HomeButtons from "@/modules/home/HomeButtons";
 
 const Homepage = ({ pageContent }) => (
   <>
@@ -35,7 +40,8 @@ const Homepage = ({ pageContent }) => (
     <BlocksRenderer html={pageContent}>
       <SkillsBlock />
       <TypingTextBlock />
-      <ButtonBlock component={KnowMoreButton} />
+      <ButtonsBlock component={HomeButtons} />
+      <ButtonBlock component={HomeButton} />
       <ExternalLinkBlock />
     </BlocksRenderer>
   </>
