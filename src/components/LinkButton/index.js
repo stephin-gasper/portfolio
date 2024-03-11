@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import { css } from "@linaria/core";
+import Link from "next/link";
 
 const linkButtonStyles = css`
   border-radius: 0.5em;
@@ -17,10 +18,10 @@ const linkButtonStyles = css`
 `;
 
 const LinkButton = ({ url, icon: Icon, text, ...linkRestProps }) => (
-  <a href={url} className={linkButtonStyles} {...linkRestProps}>
+  <Link href={url} className={linkButtonStyles} {...linkRestProps}>
     {Icon ? <Icon /> : null}
     &nbsp; <b>{text}</b>
-  </a>
+  </Link>
 );
 
 LinkButton.propTypes = {
