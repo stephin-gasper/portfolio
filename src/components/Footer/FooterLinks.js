@@ -8,7 +8,7 @@ import {
 
 const FooterLinks = ({ navigationLinks }) => (
   <nav role="navigation">
-    <ul className={footerLinksStyles}>
+    <ul className={footerLinksStyles} id="contact-links">
       {navigationLinks.map(({ id, href, label, icon: Icon }) => (
         <li key={`footer-li-${id}`}>
           <a href={href} className={footBtnStyles}>
