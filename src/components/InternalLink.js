@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import { removeSourceUrl } from "@headstartwp/core";
 import { useSettings } from "@headstartwp/core/react";
 import NextLink from "next/link";
+import { linkStyles } from "@/styles/globals";
 
 const InternalLink = ({ href, rel, children, target }) => {
   const settings = useSettings();
@@ -11,7 +12,7 @@ const InternalLink = ({ href, rel, children, target }) => {
   });
 
   return (
-    <NextLink href={link} rel={rel} target={target}>
+    <NextLink className={linkStyles} href={link} rel={rel} target={target}>
       {children}
     </NextLink>
   );
