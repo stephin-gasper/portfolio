@@ -70,6 +70,6 @@ export const techStackHighlightStyles = css`
 `;
 
 export const teckStackHighlightItems = css`
-  text-decoration: underline var(--color-highlight) 0.17em;
+  text-decoration: underline var(--color-underline) 0.17em;
   text-underline-offset: 0.34em;
 `;
