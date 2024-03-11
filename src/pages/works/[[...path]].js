@@ -1,4 +1,4 @@
-import { useCallback, useMemo } from "react";
+import { useCallback, useMemo, useState } from "react";
 import {
   usePosts,
   fetchHookData,
@@ -20,6 +20,11 @@ import Card from "@/modules/works/Card";
 import Loader from "@/components/Loader";
 import PageSEO from "@/components/PageSEO";
 import { RACCOON_WITH_LAPTOP } from "@/constants/featureImage";
+import FilterTechStack from "@/modules/works/FilterTechStack";
+import {
+  ALL_WORK_FILTER,
+  WORK_TECH_STACK_FILTERS,
+} from "@/modules/works/Works.constants";
 
 /**
  * Archive page for work CPT
@@ -28,6 +33,8 @@ import { RACCOON_WITH_LAPTOP } from "@/constants/featureImage";
  */
 const WorksPage = () => {
   const { data, error, loading } = usePosts(worksParams);
+  const [currentTechStackFilter, setCurrentTechStackFilter] =
+    useState(ALL_WORK_FILTER);
 
   const getPostsBasedOnTermAndSort = useCallback(
     (workTerm) =>
@@ -45,15 +52,37 @@ const WorksPage = () => {
   );
 
   const projects = useMemo(
-    () => getPostsBasedOnTermAndSort("projects"),
-    [getPostsBasedOnTermAndSort],
+    () =>
+      getPostsBasedOnTermAndSort("projects").filter((post) =>
+        currentTechStackFilter !== ALL_WORK_FILTER
+          ? post.terms.tech_stack.some(
+              (term) =>
+                term.name.toLowerCase() ===
+                currentTechStackFilter.toLowerCase(),
+            )
+          : true,
+      ),
+    [currentTechStackFilter, getPostsBasedOnTermAndSort],
   );
 
   const renderWorks = useCallback(
-    ({ works, title, titleClassName, disableFirstImageLazyLoad }) =>
+    ({
+      works,
+      title,
+      titleClassName,
+      disableFirstImageLazyLoad,
+      hasFilters = false,
+    }) =>
       works ? (
         <>
           <h2 className={titleClassName}>{title}</h2>
+          {hasFilters ? (
+            <FilterTechStack
+              filterTitles={WORK_TECH_STACK_FILTERS}
+              setCurrentTechStackFilter={setCurrentTechStackFilter}
+              currentTechStackFilter={currentTechStackFilter}
+            />
+          ) : null}
           <ul className={worksWrapperStyles}>
             {works.map((work, index) => (
               <Card
@@ -74,7 +103,7 @@ const WorksPage = () => {
           </ul>
         </>
       ) : null,
-    [],
+    [currentTechStackFilter],
   );
 
   if (error) {
@@ -109,7 +138,7 @@ const WorksPage = () => {
         disableFirstImageLazyLoad: true,
       })}
 
-      {renderWorks({ works: projects, title: "Projects" })}
+      {renderWorks({ works: projects, title: "Projects", hasFilters: true })}
     </>
   );
 };
