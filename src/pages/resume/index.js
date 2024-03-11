@@ -11,6 +11,7 @@ import { resolveBatch } from "@/utils/promises";
 import Loader from "@/components/Loader";
 import PageSEO from "@/components/PageSEO";
 import FeaturedImage from "@/components/FeaturedImage";
+import { RACCOON_IN_SPACE } from "@/constants/featureImage";
 
 /**
  * Critical: prevents "TypeError: url.replace is not a function" error
@@ -24,9 +25,9 @@ const ResumePage = () => (
   <>
     <PageSEO title="Resume" />
     <FeaturedImage
-      src="/space.webp"
-      alt="Raccoon Space Gif"
-      staticImageSrc="/space-static.avif"
+      src={RACCOON_IN_SPACE.path}
+      staticImageSrc={RACCOON_IN_SPACE.staticPath}
+      alt={RACCOON_IN_SPACE.alt}
     />
     <h1>Resume</h1>
     <Resume />

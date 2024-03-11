@@ -19,6 +19,7 @@ import {
 import Card from "@/modules/works/Card";
 import Loader from "@/components/Loader";
 import PageSEO from "@/components/PageSEO";
+import { RACCOON_WITH_LAPTOP } from "@/constants/featureImage";
 
 /**
  * Archive page for work CPT
@@ -92,9 +93,9 @@ const WorksPage = () => {
       </Head>
       <PageSEO title="Work" description="Lastest works: Stephin Gasper" />
       <FeaturedImage
-        src="/laptop.webp"
-        alt="Raccoon Laptop Gif"
-        staticImageSrc="/laptop-static.avif"
+        src={RACCOON_WITH_LAPTOP.path}
+        staticImageSrc={RACCOON_WITH_LAPTOP.staticPath}
+        alt={RACCOON_WITH_LAPTOP.alt}
       />
 
       <h1>
