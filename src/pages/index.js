@@ -18,6 +18,7 @@ import TypingTextBlock from "@/modules/home/blocks/TypingTextBlock";
 import PageSEO from "@/components/PageSEO";
 import ExternalLinkBlock from "@/blocks/ExternalLinkBlock";
 import KnowMoreButton from "@/modules/home/KnowMoreButton";
+import { RACCOON_IN_SPACE } from "@/constants/featureImage";
 
 const Homepage = ({ pageContent }) => (
   <>
@@ -27,9 +28,9 @@ const Homepage = ({ pageContent }) => (
     </Head>
     <PageSEO title="Homepage" />
     <FeaturedImage
-      src="/space.webp"
-      staticImageSrc="/space-static.avif"
-      alt="Raccoon Space Gif"
+      src={RACCOON_IN_SPACE.path}
+      staticImageSrc={RACCOON_IN_SPACE.staticPath}
+      alt={RACCOON_IN_SPACE.alt}
     />
     <BlocksRenderer html={pageContent}>
       <SkillsBlock />

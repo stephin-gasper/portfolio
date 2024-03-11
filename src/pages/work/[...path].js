@@ -23,6 +23,7 @@ import TechStack from "@/modules/work/TechStack";
 
 import { PLATFORM_MAP } from "@/modules/work/Work.constants";
 import { detailsWrapperStyles } from "@/modules/work/Work.style";
+import { RACCOON_WITH_LAPTOP } from "@/constants/featureImage";
 
 /**
  * Single page for work CPT
@@ -80,9 +81,9 @@ const WorkPage = () => {
         description={stripTags(excerpt.rendered).trim()}
       />
       <FeaturedImage
-        src="/laptop.webp"
-        alt="Raccoon Laptop Gif"
-        staticImageSrc="/laptop-static.avif"
+        src={RACCOON_WITH_LAPTOP.path}
+        staticImageSrc={RACCOON_WITH_LAPTOP.staticPath}
+        alt={RACCOON_WITH_LAPTOP.alt}
       />
       <h1>
         <HtmlDecoder html={title.rendered} />
