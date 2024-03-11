@@ -5,6 +5,7 @@ import {
   addHookData,
   handleError,
   useAppSettings,
+  LinkBlock,
 } from "@headstartwp/next";
 
 import { resolveBatch } from "@/utils/promises";
@@ -13,6 +14,7 @@ import { aboutPageParams } from "@/params";
 import { BlocksRenderer, HtmlDecoder } from "@headstartwp/core/react";
 import FeaturedImage from "@/components/FeaturedImage";
 import PageSEO from "@/components/PageSEO";
+import ExternalLinkBlock from "@/blocks/ExternalLinkBlock";
 
 const AboutPage = ({ pageTitle, pageContent }) => (
   <>
@@ -27,7 +29,10 @@ const AboutPage = ({ pageTitle, pageContent }) => (
       <HtmlDecoder html={pageTitle} />
     </h1>
     <PageSEO title={pageTitle} />
-    <BlocksRenderer html={pageContent} />
+    <BlocksRenderer html={pageContent}>
+      <ExternalLinkBlock />
+      <LinkBlock />
+    </BlocksRenderer>
   </>
 );
 
