@@ -20,7 +20,7 @@ const FeaturedImage = ({ src, alt, staticImageSrc }) => {
     <div className={imageWrapperStyles}>
       <Image
         width="300"
-        height="259"
+        height="300"
         alt={alt}
         src={imageSrc}
         priority

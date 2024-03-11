@@ -11,6 +11,11 @@ export const pageParams = { postType: ["page"] };
 /**
  * @type {import('@headstartwp/core').PostParams}
  */
+export const aboutPageParams = { postType: ["page"], slug: "about" };
+
+/**
+ * @type {import('@headstartwp/core').PostParams}
+ */
 export const workParams = { postType: ["work"] };
 
 /**
