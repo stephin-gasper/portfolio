@@ -84,7 +84,11 @@ export async function getStaticPaths() {
           backendUrl: getWPUrl(),
         });
 
-        if (normalizedLink === "/" || normalizedLink === frontPage) {
+        if (
+          normalizedLink === "/" ||
+          normalizedLink === frontPage ||
+          normalizedLink === "/about/"
+        ) {
           return false;
         }
 
