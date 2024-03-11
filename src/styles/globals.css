@@ -46,7 +46,7 @@
   --border-primary: var(--color-primary);
   --border-secondary: var(--color-primary-translucent);
 
-  --card-background: #fef7fa;
+  --card-background: #fef5f9;
   --card-text: #171a1f;
 
   --link-underline: var(--color-underline);
@@ -93,7 +93,7 @@
     --border-primary: var(--color-primary);
     --border-secondary: var(--color-primary-translucent);
 
-    --card-background: #fef7fa;
+    --card-background: #fef5f9;
     --card-text: #171a1f;
 
     --link-underline: var(--color-underline);
