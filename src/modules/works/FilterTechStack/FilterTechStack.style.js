@@ -15,6 +15,7 @@ export const filterTagStyles = css`
   border: 1px solid var(--border-primary);
   line-height: 1;
   padding: 0.341em 0.796em;
+  white-space: nowrap;
 
   &.active {
     background-color: var(--color-highlight);
