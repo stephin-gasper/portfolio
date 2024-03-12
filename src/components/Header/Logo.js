@@ -17,6 +17,7 @@ const titleLinkStyles = css`
   display: inline-flex;
   justify-self: center;
   grid-column: 1 / span 3;
+  grid-row: 1;
   ${media.sm} {
     justify-self: flex-start;
     grid-column: 1 / span 1;
