@@ -1,3 +1,4 @@
+import { media } from "@/styles/breakpoints";
 import { css } from "@linaria/core";
 
 export const navLinkStyles = css`
@@ -38,10 +39,15 @@ export const navLinkStyles = css`
 export const navListStyles = css`
   display: flex;
   gap: 0.625rem;
-  grid-column: 2 / span 1;
+  grid-column: 1 / span 3;
+  grid-row: 2;
   margin: 0 -0.313rem;
   margin: 0;
   padding: 0;
+  ${media.sm} {
+    grid-column: 2 / span 1;
+    grid-row: 1;
+  }
 `;
 
 export const navListItemStyles = css`
