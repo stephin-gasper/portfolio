@@ -22,7 +22,7 @@ import PageSEO from "@/components/PageSEO";
 import { RACCOON_WITH_LAPTOP } from "@/constants/featureImage";
 import FilterTechStack from "@/modules/works/FilterTechStack";
 import {
-  ALL_WORK_FILTER,
+  WORK_FILTER_ALL,
   WORK_TECH_STACK_FILTERS,
 } from "@/modules/works/Works.constants";
 
@@ -34,7 +34,7 @@ import {
 const WorksPage = () => {
   const { data, error, loading } = usePosts(worksParams);
   const [currentTechStackFilter, setCurrentTechStackFilter] =
-    useState(ALL_WORK_FILTER);
+    useState(WORK_FILTER_ALL);
 
   const getPostsBasedOnTermAndSort = useCallback(
     (workTerm) =>
@@ -54,7 +54,7 @@ const WorksPage = () => {
   const projects = useMemo(
     () =>
       getPostsBasedOnTermAndSort("projects").filter((post) =>
-        currentTechStackFilter !== ALL_WORK_FILTER
+        currentTechStackFilter !== WORK_FILTER_ALL
           ? post.terms.tech_stack.some(
               (term) =>
                 term.name.toLowerCase() ===
