@@ -3,24 +3,20 @@ import { cx } from "@linaria/core";
 
 import { filterTagStyles, filterWrapperStyles } from "./FilterTechStack.style";
 
-const FilterTechStack = ({
-  filterTitles,
-  currentTechStackFilter,
-  setCurrentTechStackFilter,
-}) => (
+const FilterTechStack = ({ filters, currentFilter, setCurrentFilter }) => (
   <ul className={filterWrapperStyles}>
-    {filterTitles.map((item) => (
-      <li key={item.id}>
+    {filters.map((filter) => (
+      <li key={`${filter.id}-${filter.slug}`}>
         <button
           type="button"
-          onClick={() => setCurrentTechStackFilter(item.text)}
+          onClick={() => setCurrentFilter(filter.slug)}
           className={cx(
             "btn-reset",
             filterTagStyles,
-            currentTechStackFilter === item.text && "active",
+            currentFilter === filter.slug && "active",
           )}
         >
-          {item.text}
+          {filter.name}
         </button>
       </li>
     ))}
@@ -28,14 +24,15 @@ const FilterTechStack = ({
 );
 
 FilterTechStack.propTypes = {
-  filterTitles: PropTypes.arrayOf(
+  filters: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
-      text: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      slug: PropTypes.string.isRequired,
     }),
   ).isRequired,
-  setCurrentTechStackFilter: PropTypes.func.isRequired,
-  currentTechStackFilter: PropTypes.string.isRequired,
+  setCurrentFilter: PropTypes.func.isRequired,
+  currentFilter: PropTypes.string.isRequired,
 };
 
 export default FilterTechStack;

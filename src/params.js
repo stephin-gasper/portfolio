@@ -42,3 +42,13 @@ export const worksParams = {
     "_links.wp:featuredmedia",
   ],
 };
+
+/**
+ * @type {import('@headstartwp/core').TaxonomyArchiveParams}
+ */
+export const techStackTaxonomyParams = {
+  taxonomy: "tech-stack",
+  _fields: ["id", "name", "slug", "is_filterable"],
+  hide_empty: true,
+  per_page: 35,
+};
