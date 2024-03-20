@@ -2,10 +2,15 @@ import PropTypes from "prop-types";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useAppSettings } from "@headstartwp/next";
+import Loader from "./Loader";
 
 const PageSEO = ({ title, description }) => {
-  const { data } = useAppSettings();
+  const { data, loading } = useAppSettings();
   const router = useRouter(); // Get the router instance
+
+  if (loading) {
+    return <Loader />;
+  }
 
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "";
   const siteDescription = description || data.settings.site_desc;
