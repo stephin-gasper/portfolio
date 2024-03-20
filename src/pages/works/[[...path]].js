@@ -5,10 +5,11 @@ import {
   addHookData,
   handleError,
   useAppSettings,
+  useTerms,
 } from "@headstartwp/next";
 import Head from "next/head";
 
-import { worksParams } from "@/params";
+import { techStackTaxonomyParams, worksParams } from "@/params";
 import { resolveBatch } from "@/utils/promises";
 
 import FeaturedImage from "@/components/FeaturedImage";
@@ -21,10 +22,7 @@ import Loader from "@/components/Loader";
 import PageSEO from "@/components/PageSEO";
 import { RACCOON_WITH_LAPTOP } from "@/constants/featureImage";
 import FilterTechStack from "@/modules/works/FilterTechStack";
-import {
-  WORK_FILTER_ALL,
-  WORK_TECH_STACK_FILTERS,
-} from "@/modules/works/Works.constants";
+import { WORK_FILTER_ALL } from "@/modules/works/Works.constants";
 
 /**
  * Archive page for work CPT
@@ -33,8 +31,15 @@ import {
  */
 const WorksPage = () => {
   const { data, error, loading } = usePosts(worksParams);
-  const [currentTechStackFilter, setCurrentTechStackFilter] =
-    useState(WORK_FILTER_ALL);
+  const {
+    data: { terms: techStackTerms },
+    error: techStackTermsError,
+    loading: techStackTermsLoading,
+  } = useTerms(techStackTaxonomyParams);
+
+  const [currentTechStackFilter, setCurrentTechStackFilter] = useState(
+    WORK_FILTER_ALL.slug,
+  );
 
   const getPostsBasedOnTermAndSort = useCallback(
     (workTerm) =>
@@ -54,16 +59,20 @@ const WorksPage = () => {
   const projects = useMemo(
     () =>
       getPostsBasedOnTermAndSort("projects").filter((post) =>
-        currentTechStackFilter !== WORK_FILTER_ALL
+        currentTechStackFilter !== WORK_FILTER_ALL.slug
           ? post.terms.tech_stack.some(
-              (term) =>
-                term.name.toLowerCase() ===
-                currentTechStackFilter.toLowerCase(),
+              (term) => term.slug === currentTechStackFilter,
             )
           : true,
       ),
     [currentTechStackFilter, getPostsBasedOnTermAndSort],
   );
+
+  const techStackFilters = useMemo(() => {
+    const filters = techStackTerms.filter((term) => term.is_filterable);
+    filters.unshift(WORK_FILTER_ALL);
+    return filters;
+  }, [techStackTerms]);
 
   const renderWorks = useCallback(
     ({
@@ -78,9 +87,9 @@ const WorksPage = () => {
           <h2 className={titleClassName}>{title}</h2>
           {hasFilters ? (
             <FilterTechStack
-              filterTitles={WORK_TECH_STACK_FILTERS}
-              setCurrentTechStackFilter={setCurrentTechStackFilter}
-              currentTechStackFilter={currentTechStackFilter}
+              filters={techStackFilters}
+              setCurrentFilter={setCurrentTechStackFilter}
+              currentFilter={currentTechStackFilter}
             />
           ) : null}
           <ul className={worksWrapperStyles}>
@@ -103,14 +112,14 @@ const WorksPage = () => {
           </ul>
         </>
       ) : null,
-    [currentTechStackFilter],
+    [currentTechStackFilter, techStackFilters],
   );
 
-  if (error) {
+  if (error || techStackTermsError) {
     return "error";
   }
 
-  if (loading) {
+  if (loading || techStackTermsLoading) {
     return <Loader />;
   }
 
@@ -152,6 +161,11 @@ export async function getServerSideProps(context) {
       {
         func: fetchHookData(usePosts.fetcher(), context, {
           params: worksParams,
+        }),
+      },
+      {
+        func: fetchHookData(useTerms.fetcher(), context, {
+          params: techStackTaxonomyParams,
         }),
       },
       { func: fetchHookData(useAppSettings.fetcher(), context), throw: false },
