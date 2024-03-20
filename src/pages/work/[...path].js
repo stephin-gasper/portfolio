@@ -98,7 +98,7 @@ const WorkPage = () => {
         </Details>
         <Details
           name="Organization"
-          value={meta_box.taxonomy_organization?.name}
+          value={meta_box.taxonomy_work_organization?.name}
         />
         <Details name="Domain" value={meta_box.domain} />
         <Details name="Website" value={meta_box.website_url} isLink />

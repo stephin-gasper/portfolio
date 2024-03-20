@@ -36,6 +36,13 @@ module.exports = {
       rewrite: "tech-stack",
       restParam: "tech-stack",
     },
+    {
+      slug: "work-organization",
+      endpoint: "/wp-json/wp/v2/work-organization",
+      postType: ["work"],
+      rewrite: "work-organization",
+      restParam: "work-organization",
+    },
   ],
 
   redirectStrategy: "404",
