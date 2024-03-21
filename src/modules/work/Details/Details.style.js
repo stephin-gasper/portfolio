@@ -1,4 +1,5 @@
 import { css } from "@linaria/core";
+import { styled } from "@linaria/react";
 
 export const detailWrapperStyles = css`
   align-items: center;
@@ -8,8 +9,9 @@ export const detailWrapperStyles = css`
   gap: 0.569em;
 `;
 
-export const detailNameStyles = css`
-  background-color: var(--color-tertiary);
+export const DetailTitle = styled.dt`
+  background-color: ${(props) =>
+    props.hasCaution ? "var(--color-caution)" : "var(--color-tertiary)"};
   border-radius: 0.49em;
   color: var(--color-secondary);
   display: inline;
@@ -25,4 +27,8 @@ export const detailValueStyles = css`
   display: inline;
   margin: 0;
   padding: 0;
+`;
+
+export const linkStatusStyles = css`
+  color: var(--color-caution);
 `;

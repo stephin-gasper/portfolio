@@ -7,6 +7,14 @@ export const linkStyles = css`
   position: relative;
   text-indent: 0;
 
+  &.inactive {
+    color: var(--color-muted);
+    &::before,
+    &::after {
+      background-color: var(--color-muted);
+    }
+  }
+
   &::before,
   &::after {
     content: "";

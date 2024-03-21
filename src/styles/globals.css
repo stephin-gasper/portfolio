@@ -8,6 +8,8 @@
   --color-underline: #375a7f;
   --color-highlight: #78c2ad;
   --color-link: #007664;
+  --color-muted: #8c8c8c;
+  --color-caution: #ff4d4d;
 
   --font-primary: "Pacifico", cursive;
   --font-secondary: "Josefin Sans", sans-serif;
