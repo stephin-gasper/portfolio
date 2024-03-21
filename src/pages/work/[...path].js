@@ -39,6 +39,15 @@ const WorkPage = () => {
         title,
         excerpt,
         content,
+        meta_box: {
+          featured_image_url,
+          taxonomy_work_organization,
+          domain,
+          website_url,
+          is_website_active,
+          github_url,
+          project_status,
+        },
         meta_box,
         _embedded,
         terms: { tech_stack },
@@ -53,13 +62,13 @@ const WorkPage = () => {
 
   const imgSrcs = useMemo(() => {
     const srcList =
-      meta_box.featured_image_url ||
+      featured_image_url ||
       _embedded["wp:featuredmedia"].map((media) => media.source_url);
     return srcList.map((src, index) => ({
       src,
       id: `featured_image_${index}`,
     }));
-  }, [_embedded, meta_box.featured_image_url]);
+  }, [_embedded, featured_image_url]);
 
   if (error) {
     return "error";
@@ -92,17 +101,41 @@ const WorkPage = () => {
         <ExternalLinkBlock />
       </BlocksRenderer>
       <section className={detailsWrapperStyles}>
-        <Details name="Platform" value={platform} />
+        <Details
+          name="Project Status"
+          isDetailVisible={Boolean(project_status)}
+          hasCaution
+        >
+          <Details.Content>{project_status}</Details.Content>
+        </Details>
+        <Details name="Platform" isDetailVisible={Boolean(platform)}>
+          <Details.Content>{platform}</Details.Content>
+        </Details>
         <Details name="Stack">
           <TechStack items={tech_stack} />
         </Details>
         <Details
           name="Organization"
-          value={meta_box.taxonomy_work_organization?.name}
-        />
-        <Details name="Domain" value={meta_box.domain} />
-        <Details name="Website" value={meta_box.website_url} isLink />
-        <Details name="Github" value={meta_box.github_url} isLink />
+          isDetailVisible={Boolean(taxonomy_work_organization?.name)}
+        >
+          <Details.Content>{taxonomy_work_organization?.name}</Details.Content>
+        </Details>
+        <Details name="Domain" isDetailVisible={Boolean(domain)}>
+          <Details.Content>{domain}</Details.Content>
+        </Details>
+        <Details name="Website" isDetailVisible={Boolean(website_url)}>
+          <Details.Content>
+            <Details.Link
+              url={website_url}
+              isActive={is_website_active === "true"}
+            />
+          </Details.Content>
+        </Details>
+        <Details name="Github" isDetailVisible={Boolean(github_url)}>
+          <Details.Content>
+            <Details.Link url={github_url} />
+          </Details.Content>
+        </Details>
       </section>
       <ProjectImageSlider imgSrcs={imgSrcs} />
     </>
