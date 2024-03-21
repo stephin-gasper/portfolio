@@ -36,6 +36,7 @@ export const worksParams = {
     "id",
     "title",
     "slug",
+    "menu_order",
     "meta_box",
     "excerpt",
     "_links.wp:term",
