@@ -42,6 +42,7 @@ export const worksParams = {
     "_links.wp:term",
     "_links.wp:featuredmedia",
   ],
+  per_page: 35,
 };
 
 /**
