@@ -86,7 +86,7 @@ const WorkPage = () => {
         <link rel="preconnect" href="https://i.postimg.cc" />
       </Head>
       <PageSEO
-        title={stripTags(title.rendered).trim()}
+        title={stripTags(title.rendered).trim().replace("&#038;", "and")}
         description={stripTags(excerpt.rendered).trim()}
       />
       <FeaturedImage
