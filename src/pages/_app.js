@@ -2,6 +2,7 @@ import { HeadlessApp } from "@headstartwp/next";
 import Router from "next/router";
 import NProgress from "nprogress";
 
+import "../styles/normalize.css";
 import "../styles/globals.css";
 import "nprogress/nprogress.css";
 
