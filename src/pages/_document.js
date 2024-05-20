@@ -22,7 +22,7 @@ class MyDocument extends Document {
           <link
             rel="preconnect"
             href="https://fonts.gstatic.com"
-            crossOrigin="true"
+            crossOrigin=""
           />
 
           {/* ##Initiate a high-priority, asynchronous fetch for the CSS file. Works in most modern browsers. */}
